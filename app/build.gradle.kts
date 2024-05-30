@@ -76,5 +76,5 @@ dependencies {
     kapt(libs.room)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    annotationProcessor(libs.hilt.annotation.processor)
+    annotationProcessor(libs.hilt.android)
 }

@@ -1,4 +1,6 @@
-# Parcial TP3 - 30 de Mayo de 2024 - ORT Argentino, Belgrano
+# Parcial TP3 - 30 de Mayo de 2024 - ORT Argentina, Belgrano
+
+![Fickle Flight](img/app.png)
 
 - Grupo: 2
 
