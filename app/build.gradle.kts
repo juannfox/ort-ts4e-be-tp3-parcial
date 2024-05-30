@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    //Custom
+    alias(libs.plugins.navSafeArgs)
+    alias(libs.plugins.hilt)
+    kotlin("kapt")
 }
 
 android {
@@ -38,14 +42,10 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
@@ -66,4 +66,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //Custom
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.room)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    annotationProcessor(libs.hilt.annotation.processor)
 }
