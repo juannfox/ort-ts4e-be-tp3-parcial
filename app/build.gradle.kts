@@ -71,7 +71,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.glide)
     implementation(libs.retrofit)
-    implementation(libs.gson)
+    implementation(libs.retrofit.gson)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.room.ktx)
     kapt(libs.room)
