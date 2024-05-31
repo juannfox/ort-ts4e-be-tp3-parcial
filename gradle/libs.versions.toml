@@ -17,6 +17,7 @@ navSafeArgs = "2.7.7"
 navigationUiKtx = "2.7.7"
 roomKtx = "2.6.1"
 navigationFragment = "2.7.7"
+okhttpInterceptor = "4.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,6 +44,7 @@ room = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpInterceptor" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
