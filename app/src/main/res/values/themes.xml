@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Parcial" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Parcial" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="itemBackground">@color/white</item>
+        <item name="itemTextColor">@color/black</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
 </resources>
