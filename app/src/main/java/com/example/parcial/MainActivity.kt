@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-
+        // TODO borrar ejemplo retrofit
         val service = APIService.create()
 
         service.getFlights().enqueue(object : Callback<APIResponse> {
@@ -49,7 +49,18 @@ class MainActivity : AppCompatActivity() {
                     val apiResponse = response.body()
 
                     val activityText = findViewById(R.id.tv_explore) as TextView
-                    activityText.text = apiResponse?.bestFlights?.get(0)?.duration.toString()
+                    val airline= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.airline?.toString()
+                    val duration= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.duration?.toString()
+                    val fclass= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.flightClass?.toString()
+                    val departure= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.departure?.id?.toString()
+                    val arrival= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.arrival?.id?.toString()
+                    activityText.text = """
+                        Airline: $airline
+                        From: $departure
+                        To: $arrival
+                        Duration: $duration 
+                        Class: $fclass
+                    """.trimIndent()
                 }
 
             }
