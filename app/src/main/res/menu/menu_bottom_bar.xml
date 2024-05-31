@@ -26,6 +26,3 @@
         android:icon="@drawable/userprofile"
         />
 </menu>
-
-    <!--Icons from https://fonts.google.com/icons-->
-    <!--Item Ids should match navgraph IDs-->
