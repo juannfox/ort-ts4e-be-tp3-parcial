@@ -3,21 +3,11 @@ package com.example.parcial
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.parcial.models.APIResponse
-import com.example.parcial.services.APIService
-import com.example.parcial.ui.theme.ParcialTheme
+import com.example.parcial.services.APIClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
         // TODO borrar ejemplo retrofit
-        val service = APIService.create()
+        val service = APIClient.create()
 
         service.getFlights().enqueue(object : Callback<APIResponse> {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
