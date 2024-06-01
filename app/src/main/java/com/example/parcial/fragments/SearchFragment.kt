@@ -1,5 +1,6 @@
 package com.example.parcial.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -58,43 +59,31 @@ class SearchFragment : Fragment(), OnViewItemClickedListener {
         manager = LinearLayoutManager(context)
         recyclerView.layoutManager = manager
 
+        // Adapter
+        trips = mutableListOf() // Inicialmente vacia
+        flightAdapter = TripAdapter(trips, this@SearchFragment)
+        recyclerView.adapter = flightAdapter
+
         // Retrofit
         flightInterface = APIClient.create()
-        trips = mutableListOf()
+        // Cargar lista
+        loadTrips()
+    }
+
+    private fun loadTrips(){
+        /**
+         * Carga la lista de vuelos desde la API
+         */
         flightInterface.getAllTrips().enqueue(object: Callback<APIResponse> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
 
                 if (response.isSuccessful) {
                     response.body()?.bestFlights?.forEach() { tripResponse ->
-
-                        // TODO: Cambiar logica para que se muestren las escalas!
-                        val departureAirport = Airport(
-                            tripResponse.flights.first().departure.id,
-                            tripResponse.flights.first().departure.name,
-                            tripResponse.flights.first().departure.time,
-                        )
-
-                        val arrivalAirport = Airport(
-                            tripResponse.flights.last().arrival.id,
-                            tripResponse.flights.last().arrival.name,
-                            tripResponse.flights.last().arrival.time,
-                        )
-
-                        val trip = Trip(
-                            departureAirport,
-                            arrivalAirport,
-                            0,
-                            //tripResponse.duration as Int,
-                            tripResponse.flights.first().airplane,
-                            tripResponse.flights.first().airline,
-                            tripResponse.logo,
-                            tripResponse.flights.first().flightClass,
-                            tripResponse.flights.first().flightNumber,
-                            tripResponse.flights.first().legroom,
-                            tripResponse.flights.first().overnight
-                        )
-                        trips.add(trip)
+                        trips.add(mapTripResponse(tripResponse))
                     }
+                    // Avisar asincronicamente que la lista esta disponible
+                    flightAdapter.notifyDataSetChanged()
                 }
             }
 
@@ -102,21 +91,34 @@ class SearchFragment : Fragment(), OnViewItemClickedListener {
                 Log.e("Error", t.stackTraceToString())
             }
         })
+    }
 
-        var depart1 = Airport("AEP","Aeroparquest" +
-                " International Airport","2024-05-31 15:00")
-        var arriv1 = Airport("JFK","John F. Kennedy International Airport","2024-05-31 15:00")
-        var arriv2 = Airport("MIA","Miami International Airport","2024-05-31 15:00")
-        var arriv3 = Airport("VVI","Viru Viru International Airport","2024-05-31 15:00")
-        var arriv4 = Airport("IAH","George Bush Intercontinental Airport","2024-05-31 15:00")
-
-        trips.add(Trip(depart1,arriv1,162,"","United","https://www.gstatic.com/flights/airline_logos/70px/UA.png","Economy","","",true))
-        trips.add(Trip(depart1,arriv2,575,"","Aeromexico","https://www.gstatic.com/flights/airline_logos/70px/AM.png","Economy","","",false))
-        trips.add((Trip(depart1,arriv3,231,"","Avianca","https://www.gstatic.com/flights/airline_logos/70px/AV.png","Bissiness Class","","",true)))
-        trips.add(Trip(depart1,arriv4,651,"","American","https://www.gstatic.com/flights/airline_logos/70px/AA.png","Premium","","",false))
-
-        flightAdapter = TripAdapter(trips, this@SearchFragment)
-        recyclerView.adapter = flightAdapter
+    private fun mapTripResponse(tripResponse: TripResponse): Trip{
+        /**
+         * Mapea un objeto de tipo TripResponse (Model) a un objeto de tipo Trip (Entity)
+         */
+        // TODO: Cambiar logica para que se muestren las escalas!
+        return Trip(
+            Airport(
+                tripResponse.flights.first().departure.id,
+                tripResponse.flights.first().departure.name,
+                tripResponse.flights.first().departure.time,
+            ),
+            Airport(
+                tripResponse.flights.last().arrival.id,
+                tripResponse.flights.last().arrival.name,
+                tripResponse.flights.last().arrival.time,
+            ),
+            0,
+            //tripResponse.duration as Int,
+            tripResponse.flights.first().airplane,
+            tripResponse.flights.first().airline,
+            tripResponse.logo,
+            tripResponse.flights.first().flightClass,
+            tripResponse.flights.first().flightNumber,
+            tripResponse.flights.first().legroom,
+            tripResponse.flights.first().overnight
+        )
     }
 
 
