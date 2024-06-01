@@ -9,10 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial.R
 import com.example.parcial.adapters.TripAdapter
-import com.example.parcial.databinding.ActivityMainBinding
-import com.example.parcial.databinding.ActivitySearchBinding
 import com.example.parcial.databinding.FragmentSearchBinding
 import com.example.parcial.entities.Airport
 import com.example.parcial.entities.Trip
@@ -21,7 +18,6 @@ import com.example.parcial.models.APIResponse
 import com.example.parcial.models.TripResponse
 import com.example.parcial.services.APIClient
 import com.example.parcial.services.FlightInterface
-import com.example.parcial.services.FlightService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,7 +70,7 @@ class SearchFragment : Fragment(), OnViewItemClickedListener {
         /**
          * Carga la lista de vuelos desde la API
          */
-        flightInterface.getAllTrips().enqueue(object: Callback<APIResponse> {
+        flightInterface.getAllTrips().enqueue(object: Callback<APIResponse> { // TODO: Usar co-rutinas directamente
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
 
