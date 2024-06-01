@@ -18,4 +18,15 @@ class FlightService @Inject constructor(private val service:FlightInterface) {
             }
         }
     }
+
+    public suspend fun getTrip(): Trip? {
+        return withContext(Dispatchers.IO) {
+            try {
+                getTrips()?.first()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                null
+            }
+        }
+    }
 }
