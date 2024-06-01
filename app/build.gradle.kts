@@ -75,10 +75,12 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.glide)
     implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.room.ktx)
     kapt(libs.room)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     annotationProcessor(libs.hilt.android)
+    implementation(libs.okhttp.interceptor)
 }

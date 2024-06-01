@@ -17,13 +17,10 @@ navSafeArgs = "2.7.7"
 navigationUiKtx = "2.7.7"
 roomKtx = "2.6.1"
 navigationFragment = "2.7.7"
+okhttpInterceptor = "4.12.0"
 appcompat = "1.7.0"
 material = "1.12.0"
-<<<<<<< HEAD
 activity = "1.9.0"
-=======
-activity = "1.8.0"
->>>>>>> main
 constraintlayout = "2.1.4"
 
 [libraries]
@@ -44,12 +41,14 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 ## Custom
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 room = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpInterceptor" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
