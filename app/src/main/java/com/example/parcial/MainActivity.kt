@@ -8,7 +8,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.parcial.models.APIResponse
 import com.example.parcial.services.APIClient
+import com.example.parcial.services.FlightService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,8 +32,20 @@ class MainActivity : AppCompatActivity() {
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        // TODO remove
-        val apiClient = APIClient.create()
-        apiClient.getFlights()
+
+        // Launch a coroutine on the main thread
+        CoroutineScope(Dispatchers.Main).launch {
+            val service = APIClient.create()
+            // Fetch the single flights and handle the result
+            val trips = FlightService(service).getTrips()
+            trips?.forEach { trip ->
+                Log.d("MainActivity", """
+                    Duration: ${trip.duration}
+                    Price: ${trip.price} 
+                    From: ${trip.flights.first().departure.id}
+                    To: ${trip.flights.last().arrival.id}
+                    """)
+            }
+        }
     }
 }

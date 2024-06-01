@@ -8,5 +8,5 @@ import retrofit2.http.GET
 interface FlightInterface {
 
     @GET("/search")
-    suspend fun getFlights(): Response<APIResponse>
+    suspend fun getAllTrips(): APIResponse
 }

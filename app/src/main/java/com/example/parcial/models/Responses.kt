@@ -4,6 +4,14 @@ import com.google.gson.annotations.SerializedName
 
 data class APIResponse(
     @SerializedName("best_flights") val bestFlights: List<Trip>,
+    @SerializedName("search_parameters") val searchParameters: SearchParameters,
+)
+
+data class SearchParameters(
+    @SerializedName("departure_id") val from: String,
+    @SerializedName("arrival_id") val to: String,
+    @SerializedName("outbound_date") val departureDate: String,
+    @SerializedName("return_date") val arrivalDate: String
 )
 
 data class Transit(
