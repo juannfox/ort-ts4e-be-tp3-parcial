@@ -2,11 +2,11 @@ package com.example.parcial.services
 
 import com.example.parcial.models.APIResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
-import java.util.Objects
 
-interface FlightService {
+interface FlightInterface {
 
     @GET("/search")
-    fun getFlights(): Call<APIResponse>
+    suspend fun getFlights(): Response<APIResponse>
 }

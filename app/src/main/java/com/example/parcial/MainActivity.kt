@@ -28,36 +28,8 @@ class MainActivity : AppCompatActivity() {
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        // TODO borrar ejemplo retrofit
-        val service = APIClient.create()
-
-        service.getFlights().enqueue(object : Callback<APIResponse> {
-            override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
-                Log.e("Example", "Esta va segundo")
-
-                if (response.isSuccessful) {
-                    val apiResponse = response.body()
-
-                    val activityText = findViewById(R.id.tv_explore) as TextView
-                    val airline= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.airline?.toString()
-                    val duration= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.duration?.toString()
-                    val fclass= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.flightClass?.toString()
-                    val departure= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.departure?.id?.toString()
-                    val arrival= apiResponse?.bestFlights?.get(0)?.flights?.get(0)?.arrival?.id?.toString()
-                    activityText.text = """
-                        Airline: $airline
-                        From: $departure
-                        To: $arrival
-                        Duration: $duration 
-                        Class: $fclass
-                    """.trimIndent()
-                }
-
-            }
-
-            override fun onFailure(call: Call<APIResponse>, t: Throwable) {
-                Log.e("Example", t.stackTraceToString())
-            }
-        })
+        // TODO remove
+        val apiClient = APIClient.create()
+        apiClient.getFlights()
     }
 }
