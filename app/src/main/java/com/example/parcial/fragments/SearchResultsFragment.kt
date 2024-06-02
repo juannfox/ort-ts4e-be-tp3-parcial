@@ -68,7 +68,15 @@ class SearchResultsFragment: Fragment(), OnViewItemClickedListener<Trip> {
         /**
          * Carga la lista de vuelos desde la API
          */
-        flightInterface.getAllTrips().enqueue(object: Callback<APIResponse> { // TODO: Usar co-rutinas directamente
+        flightInterface.getAllTrips(
+            // HARD CODE ALERT
+            // Parametros hard-codeados porque la API no es real, sino un Mock!!
+            "google_flights",
+            "EZE",
+            "MIA",
+            "2024-05-31",
+            "2024-06-10"
+        ).enqueue(object: Callback<APIResponse> { // TODO: Usar co-rutinas directamente
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
 
