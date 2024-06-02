@@ -103,7 +103,7 @@ class SearchResultsFragment: Fragment(), OnViewItemClickedListener<Trip> {
                 tripResponse.flights.last().arrival.name,
                 tripResponse.flights.last().arrival.time,
             ),
-            0,
+            tripResponse.duration.toInt(),
             //tripResponse.duration as Int,
             tripResponse.flights.first().airplane,
             tripResponse.flights.first().airline,
@@ -111,7 +111,8 @@ class SearchResultsFragment: Fragment(), OnViewItemClickedListener<Trip> {
             tripResponse.flights.first().flightClass,
             tripResponse.flights.first().flightNumber,
             tripResponse.flights.first().legroom,
-            tripResponse.flights.first().overnight
+            tripResponse.flights.first().overnight,
+            tripResponse.price.toInt()
         )
     }
 

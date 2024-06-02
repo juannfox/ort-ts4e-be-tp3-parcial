@@ -27,8 +27,6 @@ class TripAdapter(
     override fun onBindViewHolder(holder: TripHolder, position: Int) {
         val trip = trips[position]
 
-        Log.d("TripAdapter", "got here")
-
         holder.setDepartureAirportId(trip.departureAirport?.id!!)
         holder.setDepartureAirportName(trip.departureAirport?.name!!)
         holder.setArrivalAirportId(trip.arrivalAirport?.id!!)
@@ -37,6 +35,7 @@ class TripAdapter(
         holder.setAirline(trip.airline!!)
         holder.setAirlineLogo(trip.airlineLogo)
         holder.setTravelClass(trip.travelClass!!)
+        holder.setPrice(trip.price)
 
         holder.getDetailButton().setOnClickListener {
             onItemClick.onViewItemDetail(trip)
