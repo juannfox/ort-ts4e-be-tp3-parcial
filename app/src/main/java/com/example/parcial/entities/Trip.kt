@@ -13,7 +13,8 @@ class Trip(
     var travelClass: String?,
     var flightNumber: String?,
     var legroom: String?,
-    var overnight: Boolean
+    var overnight: Boolean,
+    var price: Int
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readParcelable<Airport>(Airport::class.java.classLoader),
@@ -25,7 +26,8 @@ class Trip(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readByte() != 0.toByte()
+        parcel.readByte() != 0.toByte(),
+        parcel.readInt(),
     ) {
     }
 
@@ -40,6 +42,7 @@ class Trip(
         parcel.writeString(flightNumber)
         parcel.writeString(legroom)
         parcel.writeByte(if (overnight) 1 else 0)
+        parcel.writeInt(duration)
     }
 
     override fun describeContents(): Int {

@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
-import com.example.parcial.activities.SearchResultsActivity
 import com.example.parcial.holders.TripHolder
-import com.example.parcial.listeners.OnViewItemClickedListener
 import com.example.parcial.entities.Trip
+import com.example.parcial.listeners.OnViewItemClickedListener
 
 class TripAdapter(
     private val trips: MutableList<Trip>,
-    //private val onItemClick: OnViewItemClickedListener<Trip>
+    private val onItemClick: OnViewItemClickedListener<Trip>
 
 ): RecyclerView.Adapter<TripHolder>() {
 
@@ -28,8 +27,6 @@ class TripAdapter(
     override fun onBindViewHolder(holder: TripHolder, position: Int) {
         val trip = trips[position]
 
-        Log.d("TripAdapter", "got here")
-
         holder.setDepartureAirportId(trip.departureAirport?.id!!)
         holder.setDepartureAirportName(trip.departureAirport?.name!!)
         holder.setArrivalAirportId(trip.arrivalAirport?.id!!)
@@ -38,12 +35,12 @@ class TripAdapter(
         holder.setAirline(trip.airline!!)
         holder.setAirlineLogo(trip.airlineLogo)
         holder.setTravelClass(trip.travelClass!!)
+        holder.setPrice(trip.price)
 
-        /*
         holder.getDetailButton().setOnClickListener {
             onItemClick.onViewItemDetail(trip)
         }
-        */
+
 
     }
 }
