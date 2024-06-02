@@ -1,37 +1,27 @@
 package com.example.parcial.fragments
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial.adapters.TripAdapter
+import android.widget.Button
+import androidx.viewpager2.widget.ViewPager2
+import com.example.parcial.activities.SearchResultsActivity
+import com.example.parcial.adapters.FlightSearchStateAdapter
 import com.example.parcial.databinding.FragmentSearchBinding
-import com.example.parcial.entities.Airport
 import com.example.parcial.entities.Trip
 import com.example.parcial.listeners.OnViewItemClickedListener
-import com.example.parcial.models.APIResponse
-import com.example.parcial.models.TripResponse
-import com.example.parcial.services.APIClient
-import com.example.parcial.services.FlightInterface
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import android.widget.Toast
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
-class SearchFragment : Fragment(), OnViewItemClickedListener<Trip> {
+class SearchFragment : Fragment() {
 
-    lateinit var searchResultView: View
-
-    lateinit var recyclerView: RecyclerView
-    lateinit var manager: RecyclerView.LayoutManager
-    lateinit var flightAdapter: RecyclerView.Adapter<*>
-    private lateinit var trips: MutableList<Trip>
-    private lateinit var flightInterface: FlightInterface
+    lateinit var searchView: View
+    lateinit var btnSearch: Button
+    lateinit var searchViewPager: ViewPager2
+    lateinit var tabLayout: TabLayout
     private lateinit var binding: FragmentSearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,83 +34,40 @@ class SearchFragment : Fragment(), OnViewItemClickedListener<Trip> {
     ): View {
         binding  = FragmentSearchBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
-        searchResultView = binding.root
-        return  binding.root
+        searchView = binding.root
+        return  searchView
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchViewPager = binding.viewPagerSearchFlight
+        tabLayout = binding.tabLayoutSearchFlight
+
+        searchViewPager.adapter = FlightSearchStateAdapter(requireActivity())
+
+        TabLayoutMediator(tabLayout, searchViewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "One Way"
+                1 -> "Round Trip"
+                else -> null
+            }
+        }.attach()
+
+        btnSearch = binding.btnSearch
+
+        btnSearch.setOnClickListener(){
+            val intent = Intent(context, SearchResultsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
         super.onStart()
 
-        recyclerView = binding.flightsRecycler
-        recyclerView.setHasFixedSize(true)
-        manager = LinearLayoutManager(context)
-        recyclerView.layoutManager = manager
-
-        // Adapter
-        trips = mutableListOf() // Inicialmente vacia
-        flightAdapter = TripAdapter(trips, this@SearchFragment)
-        recyclerView.adapter = flightAdapter
-
-        // Retrofit
-        flightInterface = APIClient.create()
-        // Cargar lista
-        loadTrips()
-    }
-
-    private fun loadTrips(){
-        /**
-         * Carga la lista de vuelos desde la API
-         */
-        flightInterface.getAllTrips().enqueue(object: Callback<APIResponse> { // TODO: Usar co-rutinas directamente
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
-
-                if (response.isSuccessful) {
-                    response.body()?.bestFlights?.forEach() { tripResponse ->
-                        trips.add(mapTripResponse(tripResponse))
-                    }
-                    // Avisar asincronicamente que la lista esta disponible
-                    flightAdapter.notifyDataSetChanged()
-                }
-            }
-
-            override fun onFailure(call: Call<APIResponse>, t: Throwable) {
-                Log.e("Error", t.stackTraceToString())
-            }
-        })
-    }
-
-    private fun mapTripResponse(tripResponse: TripResponse): Trip{
-        /**
-         * Mapea un objeto de tipo TripResponse (Model) a un objeto de tipo Trip (Entity)
-         */
-        // TODO: Cambiar logica para que se muestren las escalas!
-        return Trip(
-            Airport(
-                tripResponse.flights.first().departure.id,
-                tripResponse.flights.first().departure.name,
-                tripResponse.flights.first().departure.time,
-            ),
-            Airport(
-                tripResponse.flights.last().arrival.id,
-                tripResponse.flights.last().arrival.name,
-                tripResponse.flights.last().arrival.time,
-            ),
-            0,
-            //tripResponse.duration as Int,
-            tripResponse.flights.first().airplane,
-            tripResponse.flights.first().airline,
-            tripResponse.logo,
-            tripResponse.flights.first().flightClass,
-            tripResponse.flights.first().flightNumber,
-            tripResponse.flights.first().legroom,
-            tripResponse.flights.first().overnight
-        )
     }
 
 
-    override fun onViewItemDetail(trip: com.example.parcial.entities.Trip) {
-        //Intent a vista detalle
-        Toast.makeText(context, "Item seleccionado: ${trip.departureAirport?.id} - ${trip.arrivalAirport?.id}", Toast.LENGTH_SHORT).show()
-    }
+
 }

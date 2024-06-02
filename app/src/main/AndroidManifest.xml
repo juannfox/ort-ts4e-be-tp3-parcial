@@ -32,7 +32,7 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Parcial" />
         <activity
-            android:name=".activities.SearchActivity"
+            android:name=".activities.SearchResultsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SettingsActivity"
