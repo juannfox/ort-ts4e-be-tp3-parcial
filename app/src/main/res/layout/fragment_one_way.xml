@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Departure / From -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/airplane_takeoff">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_search_from"
+                android:paddingStart="40dp"
+                android:ems="10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_departure"
+                android:inputType="text"
+                app:boxStrokeWidthFocused="6dp"
+                app:boxStrokeWidth="6dp"
+                app:boxStrokeColor="@color/fickle_black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Arrival / To -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_search_to"
+                android:paddingStart="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_arrival"
+                app:boxStrokeWidthFocused="6dp"
+                app:boxStrokeWidth="6dp"
+                app:boxStrokeColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <!-- Departura Date -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_calender">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_search_departure_date"
+                android:paddingStart="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_date"
+                app:boxStrokeWidthFocused="6dp"
+                app:boxStrokeWidth="6dp"
+                app:boxStrokeColor="@color/black"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- Select Passengers -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_people_alt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_search_passengers"
+                    android:paddingStart="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 Passenger"
+                    app:boxStrokeWidthFocused="6dp"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Select Class -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_thumb_up">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_select_class"
+                    android:paddingStart="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Class"
+                    app:boxStrokeWidthFocused="6dp"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
