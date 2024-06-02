@@ -22,19 +22,32 @@
         android:id="@+id/destination_like_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:button="@drawable/sl_favourite"
-        app:buttonTint="@android:color/black"
+        android:layout_marginEnd="15dp"
+        android:button="@drawable/sl_favourite_rounded"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/back_button" />
+
+    <CheckBox
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:button="@drawable/ic_back_arrow_rounded"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/destination_like_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@+id/destination_background_image"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="-20dp"
         app:cardCornerRadius="20dp"
-        app:contentPadding="10dp"
+        app:contentPadding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,9 +55,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="30dp"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/destination_name"
@@ -74,7 +85,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/destination_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_regular"
@@ -87,95 +98,106 @@
                 app:layout_constraintTop_toBottomOf="@+id/destination_name" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/destination_overview_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="Overview"
+                android:text="@string/destination_overview"
                 android:textColor="@color/fickle_black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/destination_city" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/destination_overview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="Spend 5 days and 4 nights in one of the best islands in the world! Bask in the sun while walking in the white sand beach and enjoy the night partying at the popular seaside bars."
                 android:textAlignment="viewStart"
+                android:textColor="@color/fickle_black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/destination_overview_title" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/destination_photos_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="Photos"
+                android:text="@string/destination_photos_title"
                 android:textColor="@color/fickle_black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/destination_overview" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardView3"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
+            <com.google.android.material.carousel.MaskableFrameLayout
+                android:id="@+id/carousel_item_container"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                android:background="#9D3B3B"
+                android:backgroundTint="#A63C3C"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/destination_city"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6">
+                app:layout_constraintTop_toBottomOf="@+id/destination_photos_title"
+                app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardView5"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cardView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView6">
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView5"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cardView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                <ImageView
+                    android:id="@+id/carousel_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.carousel.MaskableFrameLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_book_destination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/fickle_orange"
                 android:fontFamily="@font/inter_bold"
-                android:text="Book Now"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+                app:layout_constraintTop_toBottomOf="@+id/carousel_item_container"
+                tools:text="@string/button_book_text" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="55dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="9dp"
+                app:cardBackgroundColor="#F4F5F6"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintBottom_toTopOf="@+id/destination_city"
+                app:layout_constraintStart_toEndOf="@+id/destination_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <TextView
+                    android:id="@+id/destination_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="center"
+                    android:text="3D4N"
+                    android:textAlignment="center"
+                    android:textColor="@color/fickle_black" />
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

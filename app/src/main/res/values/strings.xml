@@ -21,4 +21,9 @@
     <string name="trending_destinations">Trending destinations</string>
     <string name="see_all">See all</string>
     <string name="offers">Offers</string>
+
+    /*Destination detail fragment*/
+    <string name="destination_overview">Overview</string>
+    <string name="destination_photos_title">Photos</string>
+    <string name="button_book_text">Book Now</string>
 </resources>

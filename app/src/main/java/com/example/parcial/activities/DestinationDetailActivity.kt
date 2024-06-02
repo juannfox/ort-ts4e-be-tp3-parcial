@@ -1,5 +1,6 @@
 package com.example.parcial.activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -26,11 +27,15 @@ class DestinationDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val destinationItem = intent.getParcelableExtra<Destination>("destinationDetail")
-        val destImg = intent.getStringExtra("destImg")
+        val destImg = intent.getStringExtra("mainImage")
+        val images = intent.getStringArrayListExtra("images")
 
         Glide.with(this).load(destImg).centerCrop().into(binding.destinationBackgroundImage)
         binding.destinationName.text = destinationItem?.destinationName
-        binding.destinationPrice.text = "${destinationItem?.price}"
+        binding.destinationCity.text = destinationItem?.city
+        binding.destinationPrice.text = "$${destinationItem?.price}"
+        binding.destinationOverview.text = destinationItem?.overview
+        binding.destinationDuration.text = destinationItem?.duration
 
         binding.destinationLikeButton.setOnCheckedChangeListener { checkBox, isChecked ->
             if(isChecked){
@@ -40,5 +45,9 @@ class DestinationDetailActivity : AppCompatActivity() {
             }
         }
 
+        binding.backButton.setOnClickListener(){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
