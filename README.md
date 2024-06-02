@@ -2,6 +2,8 @@
 
 ![Fickle Flight](img/app.png)
 
+![components_diagram](https://github.com/juannfox/ort-ts4e-be-tp3-parcial/assets/69096087/6d7bb7b1-b71b-4b84-92f3-f34abc73099a)
+
 - Grupo: 2
 
 ## Integrantes
