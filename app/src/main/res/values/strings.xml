@@ -21,4 +21,8 @@
     <string name="trending_destinations">Trending destinations</string>
     <string name="see_all">See all</string>
     <string name="offers">Offers</string>
+
+    /*View: Drawer navigation*/
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

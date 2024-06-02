@@ -1,0 +1,52 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Grupo 1: Cabecera personalizada -->
+    <group android:id="@+id/group_header">
+        <item
+            android:id="@+id/hello"
+            android:title="Hello"
+            android:enabled="true"
+            android:icon="@drawable/oval" />
+    </group>
+
+    <item
+        android:id="@+id/menu_separator"
+        android:title=""
+        android:enabled="false"
+        android:checkable="false"
+        android:icon="@drawable/line_2" />
+
+
+    <group android:id="@+id/group_menu">
+        <item
+            android:id="@+id/profile"
+            android:title="Profile"
+            android:enabled="true"
+            android:icon="@drawable/profile" />
+
+        <item
+            android:id="@+id/notification"
+            android:title="Notification"
+            android:enabled="true"
+            android:icon="@drawable/notification" />
+
+        <item
+            android:id="@+id/get_help"
+            android:title="Get Help"
+            android:enabled="true"
+            android:icon="@drawable/notification" />
+
+        <item
+            android:id="@+id/calendar"
+            android:title="Calendar"
+            android:enabled="true"
+            android:icon="@drawable/ion_mail_outline" />
+
+        <item
+            android:id="@+id/settings"
+            android:title="Settings"
+            android:enabled="true"
+            android:icon="@drawable/clarity_settings_line" />
+    </group>
+
+</menu>
