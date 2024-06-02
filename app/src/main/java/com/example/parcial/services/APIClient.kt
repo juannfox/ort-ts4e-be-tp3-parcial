@@ -30,7 +30,7 @@ object APIClient {
         logger.level = level;
     }
 
-    fun create(): FlightService {
-        return retrofit.create(FlightService::class.java)
+    fun create(): FlightInterface {
+        return retrofit.create(FlightInterface::class.java)
     }
 }
