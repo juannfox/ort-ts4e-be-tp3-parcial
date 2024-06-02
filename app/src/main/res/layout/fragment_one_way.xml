@@ -14,7 +14,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_airplane_takeoff">
+            app:startIconDrawable="@drawable/airplane_takeoff">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_search_from"
@@ -35,7 +35,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_airplane_landing">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_search_to"
