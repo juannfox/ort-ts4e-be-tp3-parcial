@@ -44,8 +44,12 @@ class TripHolder(v: View) : RecyclerView.ViewHolder(v) {
         binding.travelClass.text = travelClass
     }
 
-    fun getCardLayout () : View {
-        return binding.cardFlight
+    fun setPrice(price: Int){
+        binding.price.text = price.toString()
+    }
+
+    fun getDetailButton () : View {
+        return binding.tripDetailButton
     }
 
     //Revisar si corresponde mover esta lógica a otra clase
