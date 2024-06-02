@@ -3,6 +3,7 @@ package com.example.parcial.activities
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,13 @@ class DestinationDetailActivity : AppCompatActivity() {
         binding.destinationName.text = destinationItem?.destinationName
         binding.destinationPrice.text = "${destinationItem?.price}"
 
+        binding.destinationLikeButton.setOnCheckedChangeListener { checkBox, isChecked ->
+            if(isChecked){
+                Toast.makeText(this, "Destination ${destinationItem?.destinationName} liked", Toast.LENGTH_SHORT).show()
+            }else {
+                Toast.makeText(this, "Destination ${destinationItem?.destinationName} dislike", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 }
