@@ -5,6 +5,10 @@
 
     /*View: Search flights fragment*/
     <string name="flights_search">Search</string>
+    <string name="select_departure">Select Departure</string>
+    <string name="select_arrival">Select Arrival</string>
+    <string name="select_date">Select Date</string>
+
 
     /*View: Search flights result*/
     <string name="flight_duration">%d hr %dmin</string>
