@@ -8,7 +8,6 @@ object HttpConst {
     const val API_KEY_PARAM = "api_key"
     const val API_KEY = "123" // En un mundo ideal, esto vendria de un proveedor de secretos :)
     const val SEARCH_ENGINE_KEY = "engine"
-    const val SEARCH_ENGINE = "google_flights"
     const val DEPARTURE_ID_KEY_PARAM = "departure_id"
     const val ARRIVAL_ID_KEY_PARAM = "arrival_id"
     const val OUTBOUND_DATE_KEY_PARAM = "outbound_date"
