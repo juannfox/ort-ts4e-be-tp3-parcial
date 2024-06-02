@@ -1,5 +1,6 @@
 package com.example.parcial.services
 
+import com.example.parcial.helpers.HttpConst
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -10,8 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object APIClient {
     private val defaultLevel = HttpLoggingInterceptor.Level.BASIC
-    const val URL_BASE = "https://d9811bf4-5e67-4a8c-bdcf-603cbbfc0275.mock.pstmn.io/"
-    private const val apiKey = "123"
 
     // Logger
     private val logger = HttpLoggingInterceptor()
@@ -25,7 +24,7 @@ object APIClient {
 
     // Retrofit
     private val retrofit = Retrofit.Builder()
-        .baseUrl(URL_BASE)
+        .baseUrl(HttpConst.URL_BASE)
         .addConverterFactory(GsonConverterFactory.create())
         .client(httpClient)
         .build()
@@ -51,7 +50,7 @@ object APIClient {
             val url = chain.request()
                 .url
                 .newBuilder()
-                .addQueryParameter("api_key", apiKey)
+                .addQueryParameter(HttpConst.API_KEY_PARAM, HttpConst.API_KEY)
                 .build()
 
             val request = chain.request()
