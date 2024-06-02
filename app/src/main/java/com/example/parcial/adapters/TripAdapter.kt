@@ -11,7 +11,7 @@ import com.example.parcial.entities.Trip
 
 class TripAdapter(
     private val trips: MutableList<Trip>,
-    private val onItemClick: OnViewItemClickedListener
+    private val onItemClick: OnViewItemClickedListener<Trip>
 
 ): RecyclerView.Adapter<TripHolder>() {
 
@@ -38,7 +38,7 @@ class TripAdapter(
         holder.setAirlineLogo(trip.airlineLogo)
         holder.setTravelClass(trip.travelClass!!)
 
-        holder.getCardLayout().setOnClickListener {
+        holder.getDetailButton().setOnClickListener {
             onItemClick.onViewItemDetail(trip)
         }
     }

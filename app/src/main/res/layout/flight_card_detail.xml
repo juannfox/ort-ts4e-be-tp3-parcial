@@ -5,10 +5,11 @@
     android:id="@+id/card_flight"
     android:layout_width="match_parent"
     android:layout_height="233dp"
-    android:layout_margin="10dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:contentPadding="14dp">
+    app:cardElevation="2dp"
+    app:contentPadding="14dp"
+    app:layout_marginBaseline="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp"
                 app:contentPadding="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/trip_detail_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guidelineMedium"
@@ -122,7 +123,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/trip_detail_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/fickle_orange"
@@ -185,6 +186,7 @@
                 android:id="@+id/departure_airport_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="Ezeiza Ar"
                 android:textColor="@color/fickle_black"
@@ -196,6 +198,7 @@
                 android:id="@+id/arrival_airport_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="Los Angeles"
                 android:textAlignment="viewEnd"
@@ -258,8 +261,9 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/fickle_grey"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#F8F9FB"
                 app:layout_constraintBottom_toTopOf="@+id/guidelineMedium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
