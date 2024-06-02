@@ -3,10 +3,10 @@ package com.example.parcial.services
 import com.example.parcial.models.APIResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import java.util.Objects
 
-interface FlightService {
+interface FlightInterface {
 
+    // TODO: agregar query params
     @GET("/search")
-    fun getFlights(): Call<APIResponse>
+    fun getAllTrips(): Call<APIResponse>
 }

@@ -1,60 +1,51 @@
 package com.example.parcial.holders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.parcial.R
+import com.example.parcial.databinding.FlightCardDetailBinding
 
-class FlightHolder(v: View) : RecyclerView.ViewHolder(v) {
+class TripHolder(v: View) : RecyclerView.ViewHolder(v) {
     private var view : View = v;
+    private val binding = FlightCardDetailBinding.bind(view)
 
     fun setDepartureAirportId(departureAirportId: String){
-        var departureAirportIdText: TextView = view.findViewById(R.id.departure_airport_id)
-        departureAirportIdText.text = departureAirportId
+        binding.departureAirportId.text = departureAirportId
     }
 
     fun setDepartureAirportName(departureAirportName: String){
-        var departureAirportNameText: TextView = view.findViewById(R.id.departure_airport_name)
-        departureAirportNameText.text = formatAirportName(departureAirportName)
+        binding.departureAirportName.text = formatAirportName(departureAirportName)
     }
 
     fun setArrivalAirportId(arrivalAirportId: String){
-        var arrivalAirportIdText: TextView = view.findViewById(R.id.arrival_airport_id)
-        arrivalAirportIdText.text = arrivalAirportId;
+        binding.arrivalAirportId.text = arrivalAirportId;
     }
 
     fun setArrivalAirportName(arrivalAirportName: String){
-        var arrivalAirportNameText: TextView = view.findViewById(R.id.arrival_airport_name)
-        arrivalAirportNameText.text = formatAirportName(arrivalAirportName)
+        binding.departureAirportName.text = formatAirportName(arrivalAirportName)
     }
     fun setDuration(duration: Int){
         //Considerar que viene en minutos y debo separar horas y minutos
         val (hours, minutes) = extractHoursAndMinutes(duration)
-        val durationText : TextView = view.findViewById(R.id.duration)
-        durationText.text = "${hours}hr ${minutes}min"
+        binding.duration.text = "${hours}hr ${minutes}min"
         //Ver de extraer texto de string resources
         //durationText.text = getString(R.string.flight_duration, 0,0);
     }
 
-    fun setAirlane(airlaneName: String){
-        val airlaneText : TextView =  view.findViewById(R.id.airlane_name)
-        airlaneText.text = airlaneName
+    fun setAirline(airlineName: String){
+        binding.airlineName.text = airlineName
     }
 
     fun setAirlineLogo (url: String?){
-        val img : ImageView = view.findViewById(R.id.airline_logo)
-        Glide.with(view).load(url).into(img)
+        Glide.with(view).load(url).into(binding.airlineLogo)
     }
 
     fun setTravelClass(travelClass: String){
-        val travelClassText: TextView = view.findViewById(R.id.travel_class)
-        travelClassText.text = travelClass
+        binding.travelClass.text = travelClass
     }
 
     fun getCardLayout () : View {
-        return view.findViewById(R.id.card_flight)
+        return binding.cardFlight
     }
 
     //Revisar si corresponde mover esta lógica a otra clase
