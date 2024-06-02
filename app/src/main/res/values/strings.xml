@@ -8,4 +8,10 @@
     <string name="flight_price">$%d</string>
     <string name="from_price">From</string>
     <string name="view_flight_details">View Details</string>
+
+    /*View: Explore fragment*/
+    <string name="flight_link">Flight</string>
+    <string name="trending_destinations">Trending destinations</string>
+    <string name="see_all">See all</string>
+    <string name="offers">Offers</string>
 </resources>

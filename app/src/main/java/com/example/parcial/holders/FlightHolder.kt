@@ -54,7 +54,7 @@ class FlightHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     fun getCardLayout () : View {
-        return view.findViewById(R.id.card_flight)
+        return view.findViewById(R.id.destination_card)
     }
 
     //Revisar si corresponde mover esta lógica a otra clase

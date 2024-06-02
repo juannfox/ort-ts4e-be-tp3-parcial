@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<APIResponse>, response: Response<APIResponse>) {
                 Log.e("Example", "Esta va segundo")
 
-                if (response.isSuccessful) {
+                /*if (response.isSuccessful) {
                     val apiResponse = response.body()
 
                     val activityText = findViewById(R.id.tv_explore) as TextView
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                         Duration: $duration 
                         Class: $fclass
                     """.trimIndent()
-                }
+                }*/
 
             }
 

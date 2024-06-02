@@ -5,6 +5,18 @@
         <item name="itemBackground">@color/white</item>
         <item name="itemTextColor">@color/black</item>
         <!--<item name="backgroundTint">@color/white</item>-->
-        <item name="colorPrimary">@color/fickle_light_blue</item>
+        <item name="colorPrimary" >@color/fickle_light_blue</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/fickle_grey</item>
+    </style>
+
+    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textColor">@color/fickle_blue</item>
     </style>
 </resources>
