@@ -5,7 +5,7 @@
 
         <SwitchPreferenceCompat
             app:key="darkMode"
-            app:title="@string/dark_mode_title" />
+            app:title="@string/dark_mode_key" />
 
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

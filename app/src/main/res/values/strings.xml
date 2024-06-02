@@ -34,5 +34,5 @@
     <!-- Sync Preferences -->
     <string name="appearances_title">Appearances</string>
     <!-- Deberia ser en ingles -->
-    <string name="dark_mode_title">Modo Oscuro</string>
+    <string name="dark_mode_key">Modo Oscuro</string>
 </resources>
