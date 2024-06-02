@@ -21,8 +21,9 @@ import com.example.parcial.services.FlightInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.widget.Toast
 
-class SearchFragment : Fragment(), OnViewItemClickedListener {
+class SearchFragment : Fragment(), OnViewItemClickedListener<Trip> {
 
     lateinit var searchResultView: View
 
@@ -120,6 +121,6 @@ class SearchFragment : Fragment(), OnViewItemClickedListener {
 
     override fun onViewItemDetail(trip: com.example.parcial.entities.Trip) {
         //Intent a vista detalle
-        TODO("Not yet implemented")
+        Toast.makeText(context, "Item seleccionado: ${trip.departureAirport?.id} - ${trip.arrivalAirport?.id}", Toast.LENGTH_SHORT).show()
     }
 }

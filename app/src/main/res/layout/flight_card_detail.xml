@@ -2,12 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/destination_card"
+    android:id="@+id/card_flight"
     android:layout_width="match_parent"
     android:layout_height="233dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp"
-    app:contentPadding="14dp">
+    app:contentPadding="14dp"
+    app:layout_marginBaseline="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +62,7 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp"
                 app:contentPadding="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintBottom_toTopOf="@+id/trip_detail_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guidelineMedium"
@@ -121,7 +123,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/trip_detail_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/fickle_orange"

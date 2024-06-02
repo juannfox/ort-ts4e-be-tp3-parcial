@@ -8,6 +8,7 @@ class Destination(
     var city: String,
     var price: Int,
     var overview: String,
+    var duration: String, //Ahora guardo texto plano 3D4N pero podría carcularse en base a fechas
     var images: MutableList<String>
 ):  Parcelable {
     constructor(parcel: Parcel) : this(
@@ -15,16 +16,17 @@ class Destination(
         parcel.readString().toString(),
         parcel.readInt(),
         parcel.readString().toString(),
+        parcel.readString().toString(),
         parcel.createStringArrayList() ?: mutableListOf()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(destinationName)
         parcel.writeString(city)
         parcel.writeInt(price)
         parcel.writeString(overview)
-        parcel.createStringArrayList() ?: mutableListOf()
+        parcel.writeString(duration)
+        parcel.writeStringList(images)
     }
 
     override fun describeContents(): Int {
