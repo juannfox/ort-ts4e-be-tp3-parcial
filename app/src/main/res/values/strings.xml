@@ -23,6 +23,13 @@
     <string name="from_price">From</string>
     <string name="view_flight_details">View Details</string>
 
+    /*View: Offers*/
+    <string name="offer_description_master">Get 20% discount with your Master credit cards</string>
+    <string name="offer_description_visa">Get 15% discount with your Visa Credit or debit cards</string>
+    <string name="offer_limited">LIMITED OFFER!</string>
+    <string name="offer_master_text">Use your mastercard with any transaction and get 20% discount instantly!</string>
+    <string name="offer_visa_text">Use your VISA credit or debit card with any transaction and get 20% discount instantly!</string>
+
     /*View: Explore fragment*/
     <string name="flight_link">Flight</string>
     <string name="trending_destinations">Trending destinations</string>
