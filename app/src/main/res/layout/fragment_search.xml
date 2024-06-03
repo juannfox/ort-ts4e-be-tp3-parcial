@@ -19,12 +19,11 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/flight_search_background"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/txt_search_offers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
@@ -34,7 +33,7 @@
             android:id="@+id/tab_layout_search_flight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            app:tabIndicatorHeight="0dp"
             android:background="@color/fickle_grey"
             app:tabBackground="@drawable/search_tab_background"
             app:tabIndicatorColor="@color/fickle_blue"
@@ -57,13 +56,14 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_search_flight"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:backgroundTint="@color/fickle_orange"
             android:fontFamily="@font/inter_bold"
             android:text="@string/flights_search"
@@ -83,19 +83,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
+        android:paddingStart="30dp"
         android:text="@string/offers"
         android:textColor="@color/fickle_black"
         android:textSize="16sp"
-        android:paddingStart="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerview_offers_horizontal"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_offers_horizontal"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_search_offers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
