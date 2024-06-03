@@ -2,20 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SearchActivity">
+    android:backgroundTint="#F8F9FB"
+    android:padding="10dp"
+    android:id="@+id/cl_activity_search_results"
+    tools:context=".activities.SearchResultsActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/fc_search_results"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navigation_search_result" />
+        android:name="com.example.parcial.fragments.SearchResultsFragment"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
