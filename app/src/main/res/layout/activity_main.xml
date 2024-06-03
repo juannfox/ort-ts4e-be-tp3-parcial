@@ -33,7 +33,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fc_main"
-        app:menu="@menu/menu_bottom_bar">
+        app:menu="@menu/menu_bottom_bar"
+        android:background="?android:attr/windowBackground">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

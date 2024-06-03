@@ -16,11 +16,6 @@ class SettingsActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fl_settings, SettingsFragment()).commit()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        // Leer Modo oscuro desde las preferencias globales
-        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
-        val darkModeToggle = getString(R.string.dark_mode_key)
-        UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
