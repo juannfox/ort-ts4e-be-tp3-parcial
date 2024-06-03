@@ -41,7 +41,7 @@ class OfferHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     fun setVectorImage(url: String?){
       val img : ImageView = view.findViewById(R.id.image_vector)
-       Glide.with(view).load(url).into(img)
+       Glide.with(view).load(url).override(70, 70).into(img)
     }
 
     fun getCardOfferView(): View {
