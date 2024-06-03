@@ -6,6 +6,7 @@
         <item name="itemTextColor">@color/black</item>
         <!--<item name="backgroundTint">@color/white</item>-->
         <item name="colorPrimary" >@color/fickle_light_blue</item>
+        <!--<item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>-->
     </style>
 
     <style name="BottomNavigationView" parent="@style/TextAppearance.AppCompat.Caption">
@@ -17,7 +18,16 @@
     <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
         <item name="android:textSize">13sp</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textColor">@color/fickle_blue</item>
+    </style>
+
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">@color/fickle_blue</item>
+        <item name="colorOnSurfaceVariant">@color/fickle_blue</item>
     </style>
 
     /****************************************************************************/
