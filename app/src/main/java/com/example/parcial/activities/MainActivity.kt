@@ -1,5 +1,6 @@
 package com.example.parcial.activities
 
+import SettingsFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +24,16 @@ class MainActivity : AppCompatActivity() {
         bottomNavView = findViewById(R.id.bottom_bar)
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
+
+        // TODO: Quitar y llamar a settings fragment como navegacion del drawaer menu
+        val target_fragment = intent.getStringExtra("target_fragment")
+        // Navigate to the appropriate Fragment with the retrieved data
+        if (target_fragment == "SettingsFragment"){
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fc_main,
+                SettingsFragment()
+            ).commit()
+        }
 
         // Leer Modo oscuro desde las preferencias globales
         val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
