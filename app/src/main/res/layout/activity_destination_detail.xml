@@ -150,42 +150,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/destination_overview" />
 
-            <com.google.android.material.carousel.MaskableFrameLayout
-                android:id="@+id/carousel_item_container"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="32dp"
-                android:backgroundTint="#A9A7A7"
-                android:foreground="?attr/selectableItemBackground"
-                app:layout_constraintEnd_toStartOf="@+id/destination_city"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/destination_photos_title"
-                app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
-
-                <ImageView
-                    android:id="@+id/carousel_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
-            </com.google.android.material.carousel.MaskableFrameLayout>
-
-            <Button
-                android:id="@+id/button_book_destination"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/fickle_orange"
-                android:fontFamily="@font/inter_bold"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/carousel_item_container"
-                tools:text="@string/button_book_text" />
-
             <androidx.cardview.widget.CardView
                 android:layout_width="55dp"
                 android:layout_height="25dp"
@@ -209,7 +173,33 @@
                     android:textColor="@color/fickle_black" />
             </androidx.cardview.widget.CardView>
 
+            <Button
+                android:id="@+id/button_book_destination"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/fickle_orange"
+                android:fontFamily="@font/inter_bold"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detination_detail_photos_recycler"
+                tools:text="@string/button_book_text" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detination_detail_photos_recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/destination_photos_title" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.Guideline

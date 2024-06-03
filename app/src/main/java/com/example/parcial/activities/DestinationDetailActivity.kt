@@ -2,13 +2,19 @@ package com.example.parcial.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.parcial.R
+import com.example.parcial.adapters.DestinationAdapter
+import com.example.parcial.adapters.DetinationDetailPhotoAdapter
 import com.example.parcial.databinding.ActivityDestinationDetailBinding
+import com.example.parcial.databinding.FragmentExploreBinding
 import com.example.parcial.domain.FavouriteUseCase
 import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
@@ -25,6 +31,11 @@ class DestinationDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDestinationDetailBinding
 
+    lateinit var recyclerView: RecyclerView
+    lateinit var manager: RecyclerView.LayoutManager
+    lateinit var destinationDetailPhotoAdapter: RecyclerView.Adapter<*>
+    private lateinit var destinationPhotos: MutableList<String>
+
     @Inject
     lateinit var favouriteUseCase: FavouriteUseCase
 
@@ -40,7 +51,6 @@ class DestinationDetailActivity : AppCompatActivity() {
 
         val destinationItem = intent.getParcelableExtra<Destination>("destinationDetail")
         val destImg = intent.getStringExtra("mainImage")
-        val images = intent.getStringArrayListExtra("images")
 
         isChecked("${destinationItem?.destinationName}-${destinationItem?.city}")
 
@@ -95,6 +105,20 @@ class DestinationDetailActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        recyclerView = binding.detinationDetailPhotosRecycler
+        recyclerView.setHasFixedSize(true)
+        manager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = manager
+
+        // Adapter
+        destinationPhotos = intent.extras?.getStringArrayList("images")!!
+        Log.d("PARCIAL-FOTOSS", destinationPhotos.size.toString())
+        destinationDetailPhotoAdapter = DetinationDetailPhotoAdapter(destinationPhotos)
+        recyclerView.adapter = destinationDetailPhotoAdapter
     }
 
     private fun addFavourite(id: String) {
