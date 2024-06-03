@@ -1,14 +1,12 @@
 package com.example.parcial.activities
 
-import android.app.UiModeManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.getSystemService
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import androidx.preference.SwitchPreference
+import androidx.preference.SwitchPreferenceCompat
 import com.example.parcial.R
+import com.example.parcial.helpers.UIHelpers
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +17,10 @@ class SettingsActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // TODO: Reuse
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean(getString(R.string.dark_mode_key), false)) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+        // Leer Modo oscuro desde las preferencias globales
+        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
+        val darkModeToggle = getString(R.string.dark_mode_key)
+        UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
@@ -36,17 +31,16 @@ class SettingsActivity : AppCompatActivity() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_settings, rootKey)
 
-            toggleNightMode()
+            configureNightModeSetting()
         }
 
-        private fun toggleNightMode(){
-            val darkMode = findPreference<SwitchPreference>(getString(R.string.dark_mode_key))
+        private fun configureNightModeSetting(){
+            val darkMode = findPreference<SwitchPreferenceCompat>(getString(R.string.dark_mode_key))
             darkMode?.apply {
                 setDefaultValue(false)
                 setOnPreferenceChangeListener { _, lastRead ->
-                    // Manejo del modo oscuro con controlador nativo de Material
-                    val nightMode = if (lastRead as Boolean) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-                    AppCompatDelegate.setDefaultNightMode(nightMode);
+                    // Prender o Apagar Modo oscuro
+                    UIHelpers.toggleNightMode(lastRead as Boolean);
 
                     true
                 }
