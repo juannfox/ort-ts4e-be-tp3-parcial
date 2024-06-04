@@ -1,6 +1,5 @@
 package com.example.parcial.activities
 
-import MainActivity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,10 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.parcial.R
-import com.example.parcial.adapters.DestinationAdapter
 import com.example.parcial.adapters.DetinationDetailPhotoAdapter
 import com.example.parcial.databinding.ActivityDestinationDetailBinding
-import com.example.parcial.databinding.FragmentExploreBinding
 import com.example.parcial.domain.FavouriteUseCase
 import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite

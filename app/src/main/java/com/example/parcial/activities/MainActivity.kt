@@ -1,14 +1,17 @@
+package com.example.parcial.activities
+
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageButton
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.parcial.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
@@ -42,6 +45,16 @@ class MainActivity : AppCompatActivity() {
         // Obtener el NavigationView y vincularlo con el NavController
         navigationView = findViewById(R.id.nav_view)
         NavigationUI.setupWithNavController(navigationView, navHostFragment.navController)
+
+        // Configurar el botón del menú hamburguesa para abrir y cerrar el DrawerLayout
+        val btnMenu: ImageButton = findViewById(R.id.btn_menu)
+        btnMenu.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
