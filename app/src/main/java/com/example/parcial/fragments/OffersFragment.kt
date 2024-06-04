@@ -6,16 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-import androidx.navigation.findNavController
-import com.example.parcial.R
-import com.example.parcial.activities.MainActivity
-import com.example.parcial.databinding.FragmentOffersBinding
-
-class OffersFragment : Fragment() {
-
-    private lateinit var binding: FragmentOffersBinding
-=======
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
@@ -31,7 +21,6 @@ class OffersFragment : Fragment() {
 
     private var offers: MutableList<Offer> = ArrayList()
 
->>>>>>> main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,20 +30,13 @@ class OffersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-<<<<<<< HEAD
-        binding = FragmentOffersBinding.inflate(layoutInflater)
-        return binding.root
-=======
         vista = inflater.inflate(R.layout.fragment_offers, container, false)
 
         return vista
->>>>>>> main
     }
 
     override fun onStart() {
         super.onStart()
-<<<<<<< HEAD
-=======
 
         fillList()
 
@@ -90,6 +72,5 @@ class OffersFragment : Fragment() {
 
         offers.add(offer1)
         offers.add(offer2)
->>>>>>> main
     }
 }
