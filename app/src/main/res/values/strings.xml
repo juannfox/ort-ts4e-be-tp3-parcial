@@ -28,6 +28,13 @@
     <string name="trending_destinations">Trending destinations</string>
     <string name="see_all">See all</string>
     <string name="offers">Offers</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Settings/Preferences -->
+    <string name="appearances_title">Generales</string>
+    <!-- Deberia ser en ingles -->
+    <string name="dark_mode_title">Modo Oscuro</string>
+    <string name="dark_mode_key">darkMode</string>
 
     /*Destination detail fragment*/
     <string name="destination_overview">Overview</string>

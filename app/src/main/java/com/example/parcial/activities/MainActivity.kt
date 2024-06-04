@@ -1,10 +1,14 @@
 package com.example.parcial.activities
 
+import SettingsFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 import com.example.parcial.R
+import com.example.parcial.fragments.SettingsWrapperFragment
+import com.example.parcial.helpers.UIHelpers
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -22,5 +26,15 @@ class MainActivity : AppCompatActivity() {
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
+        darkModeSetup()
+    }
+
+    private fun darkModeSetup(){
+        // Leer Modo oscuro desde las preferencias globales
+        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
+        val darkModeToggle = getString(R.string.dark_mode_key)
+        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
+        // Recrear la activity solo si cambio el modo
+        if (toggled) this.recreate()
     }
 }
