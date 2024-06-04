@@ -37,4 +37,10 @@
     <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
     <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
     <string name="favourite_error_alert">"An error has occurred :("</string>
+
+    /*Drawer Menu*/
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="menu_button_description">Open navigation menu</string>
+
 </resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Primer grupo de opciones -->
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/photo_item"
+            android:tooltipText="Hello"
+            android:title="Macy Johnson"
+            android:enabled="true" />
+
+    </group>
+
+    <!-- Separador -->
+    <item android:title=""/>
+
+    <!-- Segundo grupo de opciones -->
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/profile"
+            android:title="Profile"
+            android:enabled="true"
+            android:icon="@drawable/profile" />
+        <item
+            android:id="@+id/notification"
+            android:title="Notification"
+            android:enabled="true"
+            android:icon="@drawable/notification" />
+        <item
+            android:id="@+id/get_help"
+            android:title="Get Help"
+            android:enabled="true"
+            android:icon="@drawable/ion_mail_outline" />
+        <item
+            android:id="@+id/calendar"
+            android:title="Calendar"
+            android:enabled="true"
+            android:icon="@drawable/ic_calender" />
+        <item
+            android:id="@+id/settings"
+            android:title="Settings"
+            android:enabled="true"
+            android:icon="@drawable/clarity_settings_line" />
+    </group>
+
+</menu>
