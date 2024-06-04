@@ -31,8 +31,8 @@ class ProfileFragment : Fragment() {
         super.onStart()
 
         // Boton temporal para ir a Settings mientras se arma esta pantalla
-        binding.btSettings.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.settings)
-        }
+        //binding.btSettings.setOnClickListener { view ->
+        //    view.findNavController().navigate(R.id.settings)
+        //}
     }
 }

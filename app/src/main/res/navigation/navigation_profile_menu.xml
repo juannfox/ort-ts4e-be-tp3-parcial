@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_profile_menu"
+    app:startDestination="@id/settingsWrapperFragment">
+
+    <fragment
+        android:id="@+id/settingsWrapperFragment"
+        android:name="com.example.parcial.fragments.SettingsWrapperFragment"
+        android:label="SettingsWrapperFragment" />
+</navigation>
