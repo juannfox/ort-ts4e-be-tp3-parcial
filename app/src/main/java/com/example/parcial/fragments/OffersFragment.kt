@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.example.parcial.R
 import com.example.parcial.activities.MainActivity
 import com.example.parcial.databinding.FragmentOffersBinding
 
@@ -27,13 +29,5 @@ class OffersFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        // Boton temporal para ir a Settings mientras se arma esta pantalla
-        binding.btSettings.setOnClickListener(){
-            val intent = Intent(context, MainActivity::class.java)
-            intent.putExtra("target_fragment", "SettingsFragment")
-            startActivity(intent)
-        }
-
     }
 }
