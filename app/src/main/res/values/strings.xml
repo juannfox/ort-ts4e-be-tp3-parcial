@@ -35,4 +35,13 @@
     <string name="trending_destinations">Trending destinations</string>
     <string name="see_all">See all</string>
     <string name="offers">Offers</string>
+
+    /*Destination detail fragment*/
+    <string name="destination_overview">Overview</string>
+    <string name="destination_photos_title">Photos</string>
+    <string name="button_book_text">Book Now</string>
+
+    <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
+    <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
+    <string name="favourite_error_alert">"An error has occurred :("</string>
 </resources>
