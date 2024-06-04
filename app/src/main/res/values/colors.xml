@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="dark_grey">#3A3A3A</color>
     <color name="white">#FFFFFFFF</color>
 
     <color name="fickle_black">#191919</color>
@@ -13,6 +14,7 @@
     <color name="fickle_grey">#7E8B97</color>
     <color name="fickle_blue">#10579B</color>
     <color name="fickle_light_blue">#3AA4C8</color>
+    <color name="fickle_light_blue_variant">#03B6F3</color>
     <color name="fickle_yellow">#F99A0E</color>
     <color name="fickle_orange">#F99A0E</color>
 </resources>

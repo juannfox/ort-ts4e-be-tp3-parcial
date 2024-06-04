@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Parcial" parent="Theme.MaterialComponents.DayNight.NoActionBar"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item name="itemBackground">@color/dark_grey</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="colorPrimary" >@color/fickle_light_blue_variant</item>
+        <item name="backgroundColor">@color/dark_grey</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorSurface">@color/dark_grey</item>
+        <item name="android:backgroundTint">@color/dark_grey</item>
+        <item name="colorOnPrimary">@color/fickle_light_blue_variant</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/fickle_light_blue_variant</item>
+    </style>
+
+</resources>
