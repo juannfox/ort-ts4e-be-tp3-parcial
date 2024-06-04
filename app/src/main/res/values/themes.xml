@@ -54,7 +54,7 @@
     /****************************************************************************/
 
     <style name="ThemeOverlay.MaterialComponents.TextInputLayout" parent="ThemeOverlay.MaterialComponents.Light">
-        <!-- Personaliza los colores aquí si es necesario -->
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
