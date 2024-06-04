@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
 import com.example.parcial.adapters.OfferAdapter
+import com.example.parcial.databinding.FragmentOffersBinding
 import com.example.parcial.entities.Offer
 
 class OffersFragment : Fragment() {
 
-    lateinit var vista: View
+    lateinit var offerView: View
     lateinit var recOffers: RecyclerView
     lateinit var manager : RecyclerView.LayoutManager
     lateinit var offerAdapter: RecyclerView.Adapter<*>
+    lateinit private var binding: FragmentOffersBinding
 
     private var offers: MutableList<Offer> = ArrayList()
 
@@ -29,9 +31,11 @@ class OffersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        vista = inflater.inflate(R.layout.fragment_offers, container, false)
+        binding = FragmentOffersBinding.inflate(layoutInflater)
 
-        return vista
+        offerView = binding.root
+
+        return offerView
     }
 
     override fun onStart() {
@@ -39,7 +43,7 @@ class OffersFragment : Fragment() {
 
         fillList()
 
-        recOffers = vista.findViewById(R.id.rec_offers)
+        recOffers = binding.recOffers
         recOffers.setHasFixedSize(true)
         manager = LinearLayoutManager(context)
         offerAdapter = OfferAdapter(offers)
