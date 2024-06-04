@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/black"/>
+
     <item android:state_selected="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/fickle_blue" />
@@ -9,8 +14,28 @@
     </item>
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/fickle_grey" />
+
             <corners android:radius="100dp" />
         </shape>
     </item>
+</selector>
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Tab seleccionado -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/fickle_blue"/> <!-- Color cuando está seleccionado -->
+            <corners android:radius="100dp" />
+            <padding android:bottom="4dp" android:top="4dp"/>
+        </shape>
+    </item>
+
+
+    <!-- Tab no seleccionado -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="100dp" />
+        </shape>
+    </item>
+
 </selector>
