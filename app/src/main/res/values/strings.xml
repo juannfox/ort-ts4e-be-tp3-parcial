@@ -16,12 +16,6 @@
     <string name="from_price">From</string>
     <string name="view_flight_details">View Details</string>
 
-    /*View: Offers*/
-    <string name="offer_description_master">Get 20% discount with your Master credit cards</string>
-    <string name="offer_description_visa">Get 15% discount with your Visa Credit or debit cards</string>
-    <string name="offer_limited">LIMITED OFFER!</string>
-    <string name="offer_master_text">Use your mastercard with any transaction and get 20% discount instantly!</string>
-    <string name="offer_visa_text">Use your VISA credit or debit card with any transaction and get 20% discount instantly!</string>
 
     /*View: Explore fragment*/
     <string name="flight_link">Flight</string>
@@ -44,4 +38,15 @@
     <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
     <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
     <string name="favourite_error_alert">"An error has occurred :("</string>
+
+      /*Drawer Menu*/
+
+        <string name="open_drawer">Open Drawer</string>
+        <string name="close_drawer">Close Drawer</string>
+        <string name="menu_button_description">Menu</string>
+        <string name="image1_description">Image 1</string>
+        <string name="image2_description">Image 2</string>
+    <string name="hello">Hello</string>
+
+
 </resources>
