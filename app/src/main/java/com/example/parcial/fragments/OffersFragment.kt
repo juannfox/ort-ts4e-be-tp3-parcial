@@ -47,7 +47,7 @@ class OffersFragment : Fragment() {
         recOffers = binding.recOffers
         recOffers.setHasFixedSize(true)
         manager = LinearLayoutManager(context)
-        offerAdapter = OfferAdapter(offers)
+        offerAdapter = OfferAdapter(offers) //,true)
 
         recOffers.layoutManager = manager
         recOffers.adapter = offerAdapter

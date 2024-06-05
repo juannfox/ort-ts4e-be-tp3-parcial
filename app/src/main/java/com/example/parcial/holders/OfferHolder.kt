@@ -6,46 +6,44 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
 import com.bumptech.glide.Glide
+import com.example.parcial.databinding.OfferCardBinding
 
 class OfferHolder(v: View) : RecyclerView.ViewHolder(v) {
 
-    private var view: View
-    init {
-        view = v
-    }
+    private var view: View = v;
+    private val binding = OfferCardBinding.bind(v)
 
     fun setlimOffer(limOffer: String?){
-        val txt = view.findViewById<TextView>(R.id.limited_offer)
-        txt.text = limOffer
+        binding.limitedOffer.text = limOffer
     }
 
     fun setTitle(title: String?){
-        val txt = view.findViewById<TextView>(R.id.text_tittle)
-        txt.text = title
+        binding.textTittle.text = title
     }
 
     fun setDescription(description: String?){
-        val txt = view.findViewById<TextView>(R.id.text_description)
-        txt.text = description
+        binding.textDescription.text = description
     }
 
     fun setCardImage(url: String?){
-        val img : ImageView = view.findViewById(R.id.image_card)
-        Glide.with(view).load(url).into(img)
+        Glide.with(view).load(url).into(binding.imageCard )
     }
 
     fun setFavImage(url: String?){
-        val img : ImageView = view.findViewById(R.id.image_fav)
-        Glide.with(view).load(url).into(img)
+        Glide.with(view).load(url).into(binding.imageFav)
     }
 
     fun setVectorImage(url: String?){
-      val img : ImageView = view.findViewById(R.id.image_vector)
-       Glide.with(view).load(url).override(70, 70).into(img)
+       Glide.with(view).load(url).override(70, 70).into(binding.imageVector)
     }
 
-    fun getCardOfferView(): View {
-        return view.findViewById(R.id.offer_card)
-    }
+   // fun hideVectorFav(){
+     //   binding.imageFav.visibility = View.GONE
+       // binding.imageVector.visibility = View.GONE
+    //}
+
+    //fun getCardOfferView(): View {
+      //  return view.findViewById(R.id.offer_card)
+    //}
 
 }
