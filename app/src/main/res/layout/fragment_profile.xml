@@ -8,9 +8,11 @@
     tools:context=".fragments.ProfileFragment">
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/menu_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:menu="@menu/menu_profile"
-        />
+        app:menu="@menu/menu_profile">
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

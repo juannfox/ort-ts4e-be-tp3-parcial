@@ -1,7 +1,10 @@
 package com.example.parcial.activities
 
 import SettingsFragment
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -26,7 +29,18 @@ class MainActivity : AppCompatActivity() {
         // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        darkModeSetup()
+        renderSettingsFragment() // Solo si el intent tiene el parametro esperado
+
+        darkModeSetup() // Lectura de preferencias globales para modo oscuro
+    }
+
+    private fun renderSettingsFragment(){
+        // Ver si mostrar 5 elemento de navegacion, SettingsFragment
+        // La bottom bar soporta solo 4, pero usamos el mismo nav controller
+        if (intent.extras != null){
+            val isSettings = intent.extras?.getBoolean("settings", false)
+            navHostFragment.navController.navigate(R.id.settings)
+        }
     }
 
     private fun darkModeSetup(){
