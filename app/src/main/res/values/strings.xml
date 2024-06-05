@@ -39,8 +39,13 @@
     <string name="favourite_error_alert">"An error has occurred :("</string>
 
       /*Drawer Menu*/
-    <string name="open_drawer">Open Drawer</string>
-    <string name="close_drawer">Close Drawer</string>
-    <string name="menu_button_description">Menu</string>
+
+        <string name="open_drawer">Open Drawer</string>
+        <string name="close_drawer">Close Drawer</string>
+        <string name="menu_button_description">Menu</string>
+        <string name="image1_description">Image 1</string>
+        <string name="image2_description">Image 2</string>
+    <string name="hello">Hello</string>
+
 
 </resources>
