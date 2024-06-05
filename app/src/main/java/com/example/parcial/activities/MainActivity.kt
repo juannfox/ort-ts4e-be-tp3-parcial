@@ -1,6 +1,8 @@
 package com.example.parcial.activities
 
+import SettingsFragment
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +12,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.parcial.R
+import com.example.parcial.fragments.SettingsWrapperFragment
+import com.example.parcial.helpers.UIHelpers
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -55,6 +59,18 @@ class MainActivity : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
+
+        // Configurar el modo oscuro
+        darkModeSetup()
+    }
+
+    private fun darkModeSetup() {
+        // Leer Modo oscuro desde las preferencias globales
+        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this)
+        val darkModeToggle = getString(R.string.dark_mode_key)
+        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false))
+        // Recrear la activity solo si cambio el modo
+        if (toggled) this.recreate()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
