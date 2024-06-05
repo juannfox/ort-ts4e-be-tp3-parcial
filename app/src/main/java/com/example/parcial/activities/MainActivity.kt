@@ -60,17 +60,25 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Configurar el modo oscuro
-        darkModeSetup()
+        renderSettingsFragment() // Solo si el intent tiene el parametro esperado
+
+        darkModeSetup() // Lectura de preferencias globales para modo oscuro
     }
 
-    private fun darkModeSetup() {
+    private fun renderSettingsFragment(){
+        // Ver si mostrar 5 elemento de navegacion, SettingsFragment
+        // La bottom bar soporta solo 4, pero usamos el mismo nav controller
+        if (intent.extras != null){
+            val isSettings = intent.extras?.getBoolean("settings", false)
+            navHostFragment.navController.navigate(R.id.settings)
+        }
+    }
+
+    private fun darkModeSetup(){
         // Leer Modo oscuro desde las preferencias globales
-        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this)
+        val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
         val darkModeToggle = getString(R.string.dark_mode_key)
-        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false))
-        // Recrear la activity solo si cambio el modo
-        if (toggled) this.recreate()
+        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
