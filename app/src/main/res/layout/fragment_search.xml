@@ -28,41 +28,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
+        <!--
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay"
             android:elevation="0dp">
+-->
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout_search_flight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            app:tabBackground="@drawable/search_tab_background"
-            app:tabIndicatorColor="@color/fickle_blue"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/fickle_grey">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_search_flight"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="One way" />
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="fixed"
+                app:tabGravity="fill"
+                app:tabBackground="@drawable/search_tab_background"
+                app:tabIndicatorColor="@color/fickle_blue"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/fickle_grey"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Round trip" />
 
-        </com.google.android.material.tabs.TabLayout>
+
+
+
+        <!--
         </com.google.android.material.appbar.AppBarLayout>
+-->
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager_search_flight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:paddingTop="10dp"/>
 

@@ -15,6 +15,7 @@
     <string name="select_passengers">1 Passenger</string>
     <string name="hint_class">Class</string>
     <string name="select_class">Class</string>
+    <string name="add_destination">Add new destination</string>
 
 
     /*View: Search flights result*/
@@ -45,4 +46,5 @@
     <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
     <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
     <string name="favourite_error_alert">"An error has occurred :("</string>
+    <string name="new_route">New route added</string>
 </resources>
