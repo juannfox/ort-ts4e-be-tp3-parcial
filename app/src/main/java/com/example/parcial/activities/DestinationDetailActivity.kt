@@ -3,6 +3,10 @@ package com.example.parcial.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.FrameLayout
+import androidx.activity.BackEventCompat
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +23,7 @@ import com.example.parcial.domain.FavouriteUseCase
 import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.FavouriteType
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +53,31 @@ class DestinationDetailActivity : AppCompatActivity() {
         //var viewModel = ViewModelProvider(this).get(DestinationDetailViewModel::class.java);
         binding = ActivityDestinationDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val standardBottomSheet = findViewById<FrameLayout>(R.id.destination_sheet)
+        val  bottomSheetBehavior = BottomSheetBehavior.from(standardBottomSheet)
+
+
+        /*val modalBottomSheetBehavior = BottomSheetBehavior.from(modalBottomSheet.view?.parent as View)
+        modalBottomSheetBehavior.peekHeight = 200
+        modalBottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED*/
+        val bottomSheetBackCallback = object : OnBackPressedCallback(/* enabled= */false) {
+            override fun handleOnBackStarted(backEvent: BackEventCompat) {
+                bottomSheetBehavior.startBackProgress(backEvent)
+            }
+
+            override fun handleOnBackProgressed(backEvent: BackEventCompat) {
+                bottomSheetBehavior.updateBackProgress(backEvent)
+            }
+
+            override fun handleOnBackPressed() {
+                bottomSheetBehavior.handleBackInvoked()
+            }
+
+            override fun handleOnBackCancelled() {
+                bottomSheetBehavior.cancelBackProgress()
+            }
+        }
 
         val destinationItem = intent.getParcelableExtra<Destination>("destinationDetail")
         val destImg = intent.getStringExtra("mainImage")
