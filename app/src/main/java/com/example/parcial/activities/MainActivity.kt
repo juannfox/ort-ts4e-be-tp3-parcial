@@ -48,7 +48,5 @@ class MainActivity : AppCompatActivity() {
         val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
         val darkModeToggle = getString(R.string.dark_mode_key)
         val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
-        // Recrear la activity solo si cambio el modo
-        if (toggled) this.recreate()
     }
 }
