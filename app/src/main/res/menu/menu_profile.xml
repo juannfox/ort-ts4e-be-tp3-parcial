@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Payment Details"
+        android:id="@+id/payment"
+        android:enabled="true"
+        android:icon="@drawable/bi_credit_card"
+        android:theme="@style/ProfileMenuTheme"
+        />
+    <item android:title="Referral Code"
+        android:id="@+id/referral"
+        android:enabled="true"
+        android:icon="@drawable/referral"
+        android:theme="@style/ProfileMenuTheme"
+        />
+    <item android:title="Settings"
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:icon="@drawable/settings"
+        android:theme="@style/ProfileMenuTheme"
+        />
+    <item android:title="Logout"
+        android:id="@+id/logout"
+        android:enabled="true"
+        android:icon="@drawable/logout"
+        android:theme="@style/ProfileMenuTheme"
+        />
+</menu>

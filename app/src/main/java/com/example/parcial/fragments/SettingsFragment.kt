@@ -22,6 +22,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             setOnPreferenceChangeListener { _, lastRead ->
                 // Prender o Apagar Modo oscuro
                 UIHelpers.toggleNightMode(lastRead as Boolean);
+                requireActivity().recreate()
 
                 true
             }
