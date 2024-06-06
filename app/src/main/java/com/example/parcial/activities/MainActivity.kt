@@ -1,6 +1,5 @@
 package com.example.parcial.activities
 
-import SettingsFragment
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.MenuItem
@@ -12,7 +11,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.parcial.R
-import com.example.parcial.fragments.SettingsWrapperFragment
 import com.example.parcial.helpers.UIHelpers
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         drawerToggle.syncState()
 
         // Obtener el NavigationView y vincularlo con el NavController
-        navigationView = findViewById(R.id.nav_view)
+        navigationView = findViewById(R.id.drawer_menu)
         NavigationUI.setupWithNavController(navigationView, navHostFragment.navController)
 
         // Configurar el botón del menú hamburguesa para abrir y cerrar el DrawerLayout
@@ -70,7 +68,15 @@ class MainActivity : AppCompatActivity() {
         // La bottom bar soporta solo 4, pero usamos el mismo nav controller
         if (intent.extras != null){
             val isSettings = intent.extras?.getBoolean("settings", false)
-            navHostFragment.navController.navigate(R.id.settings)
+            if (isSettings == true){
+                // Navegar manualmente
+                navHostFragment.navController.navigate(R.id.settings)
+                // Restaurar navgraph del bottom bar
+                bottomNavView.setOnItemSelectedListener { item ->
+                    navHostFragment.navController.navigate(item.itemId)
+                    true
+                }
+            }
         }
     }
 
