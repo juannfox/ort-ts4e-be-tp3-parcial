@@ -1,8 +1,5 @@
 package com.example.parcial.helpers
 
-import android.opengl.GLES32.DebugProc
-import retrofit2.http.Query
-
 object HttpConst {
     const val URL_BASE = "https://d9811bf4-5e67-4a8c-bdcf-603cbbfc0275.mock.pstmn.io/"
     const val API_KEY_PARAM = "api_key"

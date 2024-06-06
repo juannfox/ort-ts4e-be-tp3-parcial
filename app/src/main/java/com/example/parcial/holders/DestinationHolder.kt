@@ -4,7 +4,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.parcial.databinding.CardDestinationItemBinding
-import com.example.parcial.databinding.FlightCardDetailBinding
 
 class DestinationHolder(v: View) : RecyclerView.ViewHolder(v) {
     private var view : View = v;

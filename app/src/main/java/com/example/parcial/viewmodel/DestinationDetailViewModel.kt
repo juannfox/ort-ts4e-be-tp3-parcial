@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parcial.domain.FavouriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-//import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.FavouriteType

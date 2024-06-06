@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
-import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.Offer
 import com.example.parcial.holders.OfferHolder
-import com.example.parcial.listeners.OnViewItemClickedListener
 
 class OfferAdapter(
     private var offers: MutableList<Offer>,

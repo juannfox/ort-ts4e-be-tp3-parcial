@@ -1,12 +1,11 @@
 package com.example.parcial.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
-import com.example.parcial.holders.TripHolder
 import com.example.parcial.entities.Trip
+import com.example.parcial.holders.TripHolder
 import com.example.parcial.listeners.OnViewItemClickedListener
 
 class TripAdapter(

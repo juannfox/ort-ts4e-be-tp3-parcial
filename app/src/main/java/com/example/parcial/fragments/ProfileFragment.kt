@@ -2,23 +2,13 @@ package com.example.parcial.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.iterator
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import com.example.parcial.R
+import androidx.fragment.app.Fragment
 import com.example.parcial.activities.MainActivity
 import com.example.parcial.databinding.FragmentProfileBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding

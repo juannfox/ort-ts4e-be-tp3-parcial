@@ -9,13 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial.R
 import com.example.parcial.adapters.OfferAdapter
 import com.example.parcial.databinding.FragmentOffersBinding
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.Offer
 import com.example.parcial.viewmodel.OffersViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.withCreationCallback
 
