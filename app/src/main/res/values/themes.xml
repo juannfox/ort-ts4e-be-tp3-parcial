@@ -7,6 +7,9 @@
         <item name="backgroundColor">@color/white</item>
         <item name="colorPrimary">@color/fickle_light_blue</item>
         <item name="colorPrimaryDark">@color/fickle_blue</item>
+
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="ProfileMenuTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
