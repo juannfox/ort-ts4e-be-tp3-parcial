@@ -101,8 +101,8 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
     }
 
     private fun loadOffers(){
-        offers.add(Offer("", "20% discount for mastercard users", "limited time offer!", "", "https://i.ibb.co/QvrfXLH/offer-cardm.png", ""))
-        offers.add(Offer("", "25% discount with your visa credit cards", "limited time offer!", "", "https://i.ibb.co/zmKtCtq/offer-cardv.png", ""))
+        offers.add(Offer("", "20% discount for mastercard users", "limited time offer!", "", "https://i.ibb.co/zmKtCtq/offer-cardv.png", ""))
+        offers.add(Offer("", "25% discount with your visa credit cards", "limited time offer!", "", "https://i.ibb.co/QvrfXLH/offer-cardm.png", ""))
     }
 
     override fun onViewItemDetail(destination: Destination) {

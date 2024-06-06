@@ -61,7 +61,7 @@ class OffersFragment : Fragment() {
             "Get 20% discount with your Master credit cards",
             "Use your mastercard with any transaction and get 20% discount instantly!",
             "https://i.ibb.co/MCM7tr6/offer-fav.png",
-            "https://i.ibb.co/QvrfXLH/offer-cardm.png",
+            "https://i.ibb.co/zmKtCtq/offer-cardv.png",
             "https://i.ibb.co/syTxRWH/offer-vector.png"
         )
 
@@ -70,7 +70,7 @@ class OffersFragment : Fragment() {
             "Get 15% discount with your Visa Credit or debit cards",
             "Use your VISA credit or debit card with any transaction and get 20% discount instantly!",
             "https://i.ibb.co/MCM7tr6/offer-fav.png",
-            "https://i.ibb.co/zmKtCtq/offer-cardv.png",
+            "https://i.ibb.co/QvrfXLH/offer-cardm.png",
             "https://i.ibb.co/syTxRWH/offer-vector.png"
         )
 
