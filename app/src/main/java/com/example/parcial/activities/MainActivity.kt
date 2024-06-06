@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         val darkModeToggle = getString(R.string.dark_mode_key)
         val toggled =
             UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
+        if (toggled) this.recreate()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
