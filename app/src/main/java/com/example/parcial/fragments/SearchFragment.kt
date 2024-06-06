@@ -2,15 +2,13 @@ package com.example.parcial.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -20,8 +18,6 @@ import com.example.parcial.adapters.FlightSearchStateAdapter
 import com.example.parcial.adapters.OtherOffersAdapter
 import com.example.parcial.databinding.FragmentSearchBinding
 import com.example.parcial.entities.Offer
-import com.example.parcial.entities.Trip
-import com.example.parcial.listeners.OnViewItemClickedListener
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

@@ -11,19 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial.R
 import com.example.parcial.activities.DestinationDetailActivity
 import com.example.parcial.adapters.DestinationAdapter
-import com.example.parcial.adapters.OfferAdapter
 import com.example.parcial.adapters.OtherOffersAdapter
-import com.example.parcial.adapters.TripAdapter
 import com.example.parcial.databinding.FragmentExploreBinding
 import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Offer
-import com.example.parcial.entities.Trip
 import com.example.parcial.listeners.OnViewItemClickedListener
 import com.example.parcial.viewmodel.ExploreViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

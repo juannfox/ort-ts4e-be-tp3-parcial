@@ -1,10 +1,8 @@
 package com.example.parcial.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parcial.domain.FavouriteUseCase
-import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.FavouriteType
 import com.example.parcial.entities.Offer

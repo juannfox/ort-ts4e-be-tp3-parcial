@@ -1,11 +1,9 @@
 package com.example.parcial.holders
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parcial.R
 import com.bumptech.glide.Glide
+import com.example.parcial.R
 import com.example.parcial.databinding.OfferCardBinding
 
 class OfferHolder(v: View) : RecyclerView.ViewHolder(v) {
