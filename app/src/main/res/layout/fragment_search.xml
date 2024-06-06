@@ -10,7 +10,6 @@
     android:background="@color/fickle_light_grey">
 
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!--
         <com.google.android.material.appbar.AppBarLayout
@@ -31,21 +30,18 @@
             android:elevation="0dp">
 -->
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout_search_flight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorHeight="0dp"
-                app:tabMode="fixed"
-                app:tabGravity="fill"
-                app:tabBackground="@drawable/search_tab_background"
-                app:tabIndicatorColor="@color/fickle_blue"
-                app:tabRippleColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="@color/fickle_grey"/>
-
-
-
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_search_flight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/search_tab_background"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/fickle_blue"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/fickle_grey" />
 
 
         <!--
@@ -57,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp" />
 
         <Button
             android:id="@+id/btn_search"
