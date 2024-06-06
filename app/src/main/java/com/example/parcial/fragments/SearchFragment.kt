@@ -11,11 +11,15 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.parcial.R
 import com.example.parcial.activities.SearchResultsActivity
 import com.example.parcial.adapters.FlightSearchStateAdapter
+import com.example.parcial.adapters.OtherOffersAdapter
 import com.example.parcial.databinding.FragmentSearchBinding
+import com.example.parcial.entities.Offer
 import com.example.parcial.entities.Trip
 import com.example.parcial.listeners.OnViewItemClickedListener
 import com.google.android.material.tabs.TabLayout
@@ -27,6 +31,10 @@ class SearchFragment : Fragment() {
     lateinit var btnSearch: Button
     lateinit var searchViewPager: ViewPager2
     lateinit var tabLayout: TabLayout
+    lateinit var recOffers: RecyclerView
+    lateinit var manager: RecyclerView.LayoutManager
+    lateinit var offerAdapter: OtherOffersAdapter
+    private lateinit var offers: MutableList<Offer>
     private lateinit var binding: FragmentSearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +66,28 @@ class SearchFragment : Fragment() {
         }
 
 
+        setUpRecyclerOffer()
+        loadOffers()
 
         return  searchView
+    }
+
+    fun setUpRecyclerOffer(){
+
+        recOffers = binding.recyclerviewOffersHorizontal
+        recOffers.setHasFixedSize(true)
+        manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recOffers.layoutManager = manager
+
+        offers = mutableListOf()
+        offerAdapter = OtherOffersAdapter(offers)
+        recOffers.adapter = offerAdapter
+
+    }
+
+    fun loadOffers(){
+        offers.add(Offer("", "20% discount for mastercard users", "limited time offer!", "", "https://i.ibb.co/zmKtCtq/offer-cardv.png", "", 25, "VISA"))
+        offers.add(Offer("", "25% discount with your visa credit cards", "limited time offer!", "", "https://i.ibb.co/QvrfXLH/offer-cardm.png", "",20, "MASTERCARD"))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
