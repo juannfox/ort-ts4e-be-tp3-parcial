@@ -10,6 +10,8 @@ class Offer(
     var image_fav: String?,
     var image_card: String?,
     var image_vector: String?,
+    var discount: Int,
+    var brand: String?,
     ) :Parcelable {
 
     constructor(parcel: Parcel) : this(
@@ -18,6 +20,8 @@ class Offer(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
+        parcel.readInt(),
         parcel.readString()
     ) {
 
@@ -30,6 +34,8 @@ class Offer(
         parcel.writeString(image_fav)
         parcel.writeString(image_card)
         parcel.writeString(image_vector)
+        parcel.writeInt(discount)
+        parcel.writeString(brand)
     }
 
     override fun describeContents(): Int {

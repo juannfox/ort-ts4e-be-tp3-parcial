@@ -3,39 +3,29 @@ package com.example.parcial.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.parcial.domain.FavouriteUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
-//import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.parcial.entities.Destination
 import com.example.parcial.entities.Favourite
 import com.example.parcial.entities.FavouriteType
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-@HiltViewModel(assistedFactory = DestinationDetailViewModel.DestinationDetailViewModelFactory::class)
-class DestinationDetailViewModel @AssistedInject constructor(
-    @Assisted val destination: Destination,
+@HiltViewModel
+class ExploreViewModel @Inject constructor(
     private val favouriteUseCase: FavouriteUseCase
-): ViewModel() {
+): ViewModel(){
 
-    @AssistedFactory
-    interface DestinationDetailViewModelFactory {
-        fun create(id: Destination): DestinationDetailViewModel
-    }
+    private val MAIN_DESTINATION = "Paris-Francia"
 
     val isSaved = MutableLiveData<Boolean>()
     val isDeleted = MutableLiveData<Boolean>()
-    val isLoading = MutableLiveData<Boolean>()
     val isFavourite = MutableLiveData<Boolean>()
 
     init {
-        isChecked("${destination.destinationName}-${destination.city}")
+        isChecked(MAIN_DESTINATION)
     }
-
-    public fun addFavourite(id: String) {
+    fun addFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
                 favouriteUseCase.saveFavourite(Favourite(FavouriteType.DESTINATION.type, id))
@@ -46,8 +36,7 @@ class DestinationDetailViewModel @AssistedInject constructor(
 
         }
     }
-
-    public fun removeFavourite(id: String) {
+    fun removeFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
                 favouriteUseCase.removeFavourite(Favourite(FavouriteType.DESTINATION.type, id))
@@ -58,14 +47,12 @@ class DestinationDetailViewModel @AssistedInject constructor(
         }
     }
 
-    public fun isChecked(id: String) {
+    fun isChecked(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
-            isLoading.postValue(true)
             var result = favouriteUseCase.exists(Favourite(FavouriteType.DESTINATION.type, id))
 
             if (result != null) {
                 isFavourite.postValue(result)
-                isLoading.postValue(false)
             }
         }
     }
