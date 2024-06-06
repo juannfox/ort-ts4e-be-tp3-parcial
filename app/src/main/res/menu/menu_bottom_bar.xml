@@ -10,7 +10,7 @@
     <item android:title="Search"
         android:id="@+id/search"
         android:enabled="true"
-        android:icon="@drawable/search"
+        android:icon="@drawable/ic_search_flights"
         />
 
     <item android:title="Offers"

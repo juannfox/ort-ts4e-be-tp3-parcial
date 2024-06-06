@@ -1,12 +1,200 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Round-Trip Fragment"/>
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- Select Passengers -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/airplane_takeoff"
+
+                android:paddingEnd="5dp"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Route 1"
+                app:expandedHintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_from_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="40dp"
+                    android:text="@string/hint_from"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeWidthFocused="6dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Select Class -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/airplane_takeoff"
+                android:paddingStart="5dp"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Route 1"
+                app:expandedHintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_arrival_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="40dp"
+                    android:text="@string/hint_to"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeWidthFocused="6dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </LinearLayout>
+
+
+        <!-- Departura Date -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_calender"
+            android:paddingBottom="5dp"
+            android:hint="Route 1"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:expandedHintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_round_date_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_date"
+                android:paddingStart="40dp"
+                android:textSize="14sp"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="6dp"
+                app:boxStrokeWidthFocused="6dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- Select Passengers -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/airplane_takeoff"
+
+                android:paddingEnd="5dp"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Route 2"
+                app:expandedHintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_search_passengers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="40dp"
+                    android:text="@string/hint_from"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeWidthFocused="6dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Select Class -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/airplane_takeoff"
+                android:paddingStart="5dp"
+                app:boxBackgroundMode="outline"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Route 2"
+                app:expandedHintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_arrival_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="40dp"
+                    android:text="@string/hint_to"
+                    android:textSize="14sp"
+                    app:boxStrokeColor="@color/black"
+                    app:boxStrokeWidth="6dp"
+                    app:boxStrokeWidthFocused="6dp" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </LinearLayout>
+
+
+        <!-- Departura Date -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_calender"
+            android:paddingBottom="5dp"
+            android:hint="Route 2"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:expandedHintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_round_date_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_date"
+                android:paddingStart="40dp"
+                android:textSize="14sp"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="6dp"
+                app:boxStrokeWidthFocused="6dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_new_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_destination"
+        />
 </LinearLayout>

@@ -70,9 +70,11 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_bar"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
             app:itemBackground="@color/white"
+            app:itemPaddingBottom="20dp"
+            app:itemPaddingTop="20dp"
             app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
             app:itemTextAppearanceInactive="@style/BottomNavigationView"
             app:itemTextColor="@color/fickle_black"

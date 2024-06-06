@@ -11,6 +11,7 @@
     <color name="line_grey"> #E6E9F0</color>
 
     <color name="fickle_black">#191919</color>
+    <color name="fickle_light_grey">#F8F9FB</color>
     <color name="fickle_grey">#7E8B97</color>
     <color name="fickle_blue">#10579B</color>
     <color name="fickle_light_blue">#3AA4C8</color>

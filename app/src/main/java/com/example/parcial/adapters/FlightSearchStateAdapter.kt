@@ -8,12 +8,17 @@ import com.example.parcial.fragments.RoundTripFragment
 
 class FlightSearchStateAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
-    private val fragmentList = listOf(
-        OneWayFragment(),
-        RoundTripFragment()
-    )
+    private val fragmentList: MutableList<Fragment> = ArrayList()
 
-    override fun getItemCount(): Int = fragmentList.size
+    override fun getItemCount(): Int {
+        return fragmentList.size
+    }
 
-    override fun createFragment(position: Int): Fragment = fragmentList[position]
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList[position]
+    }
+
+    fun addFragment(fragment: Fragment) {
+        fragmentList.add(fragment)
+    }
 }
