@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.preference)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -83,4 +84,6 @@ dependencies {
     kapt(libs.hilt.compiler)
     annotationProcessor(libs.hilt.android)
     implementation(libs.okhttp.interceptor)
+    //runtimeOnly(libs.androidx.hilt)
+    runtimeOnly("androidx.hilt:hilt-navigation-compose:1.2.0")
 }

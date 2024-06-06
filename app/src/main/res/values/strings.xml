@@ -16,18 +16,19 @@
     <string name="from_price">From</string>
     <string name="view_flight_details">View Details</string>
 
-    /*View: Offers*/
-    <string name="offer_description_master">Get 20% discount with your Master credit cards</string>
-    <string name="offer_description_visa">Get 15% discount with your Visa Credit or debit cards</string>
-    <string name="offer_limited">LIMITED OFFER!</string>
-    <string name="offer_master_text">Use your mastercard with any transaction and get 20% discount instantly!</string>
-    <string name="offer_visa_text">Use your VISA credit or debit card with any transaction and get 20% discount instantly!</string>
 
     /*View: Explore fragment*/
     <string name="flight_link">Flight</string>
     <string name="trending_destinations">Trending destinations</string>
     <string name="see_all">See all</string>
     <string name="offers">Offers</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Settings/Preferences -->
+    <string name="appearances_title">Generales</string>
+    <!-- Deberia ser en ingles -->
+    <string name="dark_mode_title">Modo Oscuro</string>
+    <string name="dark_mode_key">darkMode</string>
 
     /*Destination detail fragment*/
     <string name="destination_overview">Overview</string>
@@ -37,4 +38,7 @@
     <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
     <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
     <string name="favourite_error_alert">"An error has occurred :("</string>
+
+    <string name="favourite_offer_saved_alert">"The offer was saved successfully!"</string>
+    <string name="favourite_offer_deleted_alert">"The offer was deleted successfully"</string>
 </resources>

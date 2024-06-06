@@ -15,7 +15,7 @@ class FavouriteRepository @Inject constructor(
         return favouriteDao.existsFavouriteByTypeAndId(favourite.type, favourite.typeId)
     }
     suspend fun getFavouritesDestinationsFromDatabase():List<Favourite>{
-        val response: List<FavouriteEntity> = favouriteDao.getAllDestinationsFavourites(FavouriteType.DESTINATION.type)
+        val response: List<FavouriteEntity> = favouriteDao.getAllFavourites(FavouriteType.DESTINATION.type)
         return response.map { it.toDomain() }
     }
 
@@ -25,5 +25,10 @@ class FavouriteRepository @Inject constructor(
 
     suspend fun deleteFavourite(favourite: Favourite): Int {
         return favouriteDao.deleteFavourite(favourite.toDatabase())
+    }
+
+    suspend fun getFavouritesOffersFromDatabase(): List<Favourite>? {
+        val response: List<FavouriteEntity> = favouriteDao.getAllFavourites(FavouriteType.OFFER.type)
+        return response.map { it.toDomain() }
     }
 }

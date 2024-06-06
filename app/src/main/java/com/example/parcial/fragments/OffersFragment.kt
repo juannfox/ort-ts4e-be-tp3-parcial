@@ -1,6 +1,7 @@
 package com.example.parcial.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,19 +27,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class OffersFragment : Fragment() {
 
-    private lateinit var binding: FragmentOffersBinding
-
     @Inject
     lateinit var favouriteUseCase: FavouriteUseCase
 
     val isSaved = MutableLiveData<Boolean>()
     val isDeleted = MutableLiveData<Boolean>()
-    //val isLoading = MutableLiveData<Boolean>()
-    //val isFavourite = MutableLiveData<Boolean>()
+    val favourites = MutableLiveData<List<Favourite>>()
 
+    lateinit var offerView: View
     lateinit var recOffers: RecyclerView
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var offerAdapter: RecyclerView.Adapter<*>
+    lateinit private var binding: FragmentOffersBinding
 
     private var offers: MutableList<Offer> = ArrayList()
 
@@ -51,37 +51,32 @@ class OffersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //vista = inflater.inflate(R.layout.fragment_offers, container, false)
         binding = FragmentOffersBinding.inflate(layoutInflater)
-        return binding.root
+        offerView = binding.root
+        areChecked()
+        return offerView
     }
 
     override fun onStart() {
         super.onStart()
-
         fillList()
 
         recOffers = binding.recOffers
         recOffers.setHasFixedSize(true)
         manager = LinearLayoutManager(context)
-        offerAdapter = OfferAdapter(offers) { position, isChecked ->
-            // Handle checkbox state change
-            handleCheckboxStateChange(position, isChecked)
-        }
-
         recOffers.layoutManager = manager
-        recOffers.adapter = offerAdapter
 
-        /*isFavourite.observe(this, Observer { isSavedValue ->
-            if (isSavedValue) {
-                binding.destinationLikeButton.isChecked = true
+
+        favourites.observe(viewLifecycleOwner, Observer<List<Favourite>> {
+            offerAdapter = OfferAdapter(offers, it?: listOf()) { position, isChecked ->
+                handleCheckboxStateChange(position, isChecked)
             }
-        })*/
+            recOffers.adapter = offerAdapter
+        })
 
-
-        isSaved.observe(this, Observer { isSavedValue ->
+        isSaved.observe(viewLifecycleOwner, Observer<Boolean> { isSavedValue ->
             if (isSavedValue) {
-                Snackbar.make(binding.root, R.string.favourite_saved_alert, Snackbar.LENGTH_SHORT)
+                Snackbar.make(binding.root, R.string.favourite_offer_saved_alert, Snackbar.LENGTH_SHORT)
                     .show()
             } else {
                 Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
@@ -89,15 +84,18 @@ class OffersFragment : Fragment() {
             }
         })
 
-        isDeleted.observe(this, Observer { isSavedValue ->
-            if (isSavedValue) {
-                Snackbar.make(binding.root, R.string.favourite_deleted_alert, Snackbar.LENGTH_SHORT)
+
+        isDeleted.observe(viewLifecycleOwner, Observer { isDeletedValue ->
+            if (isDeletedValue) {
+                Snackbar.make(binding.root, R.string.favourite_offer_deleted_alert, Snackbar.LENGTH_SHORT)
                     .show()
             } else {
                 Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
                     .show()
             }
         })
+
+
     }
 
     fun fillList() {
@@ -140,7 +138,7 @@ class OffersFragment : Fragment() {
     private fun addFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
-                favouriteUseCase.saveFavourite(Favourite(FavouriteType.DESTINATION.type, id))
+                favouriteUseCase.saveFavourite(Favourite(FavouriteType.OFFER.type, id))
 
             if (result != null) {
                 isSaved.postValue(result != -1L)
@@ -152,23 +150,23 @@ class OffersFragment : Fragment() {
     private fun removeFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
-                favouriteUseCase.removeFavourite(Favourite(FavouriteType.DESTINATION.type, id))
-
+                favouriteUseCase.removeFavourite(Favourite(FavouriteType.OFFER.type, id))
+                Log.d("PARCIAL-FAVS", result.toString())
             if (result != null) {
                 isDeleted.postValue(result != -1)
             }
         }
     }
 
-    /* private fun isChecked(id: String) {
-         CoroutineScope(Dispatchers.Main).launch {
-             isLoading.postValue(true)
-             var result = favouriteUseCase.exists(Favourite(FavouriteType.OFFER.type, id))
+    private fun areChecked() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val favouritesOffers = favouriteUseCase.getFavouritesOffers()
 
-             if (result != null) {
-                 isFavourite.postValue(result)
-                 isLoading.postValue(false)
-             }
-         }
-     }*/
+            if (favouritesOffers != null) {
+                favourites.postValue(favouritesOffers!!)
+            }else{
+                favourites.postValue(listOf())
+            }
+        }
+    }
 }

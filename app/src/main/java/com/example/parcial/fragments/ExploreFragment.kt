@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
@@ -15,21 +17,39 @@ import com.example.parcial.adapters.DestinationAdapter
 import com.example.parcial.adapters.TripAdapter
 import com.example.parcial.databinding.FragmentExploreBinding
 import com.example.parcial.databinding.FragmentSearchBinding
+import com.example.parcial.domain.FavouriteUseCase
 import com.example.parcial.entities.Destination
+import com.example.parcial.entities.Favourite
+import com.example.parcial.entities.FavouriteType
 import com.example.parcial.entities.Trip
 import com.example.parcial.listeners.OnViewItemClickedListener
 import com.example.parcial.services.APIClient
 import com.example.parcial.services.FlightInterface
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
 
-    lateinit var exploreView: View
+    private val MAIN_DESTINATION = "Paris-Francia"
+
+    @Inject
+    lateinit var favouriteUseCase: FavouriteUseCase
+    val isSaved = MutableLiveData<Boolean>()
+    val isDeleted = MutableLiveData<Boolean>()
+    val isFavourite = MutableLiveData<Boolean>()
 
     lateinit var recyclerView: RecyclerView
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var destinationAdapter: RecyclerView.Adapter<*>
     private lateinit var destinations: MutableList<Destination>
     private lateinit var binding: FragmentExploreBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -39,14 +59,13 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
         savedInstanceState: Bundle?
     ): View? {
         binding  = FragmentExploreBinding.inflate(layoutInflater)
-        // Inflate the layout for this fragment
-        exploreView = binding.root
         return  binding.root
         //return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
     override fun onStart() {
         super.onStart()
+        isChecked(MAIN_DESTINATION)
 
         recyclerView = binding.trendingDestinationRecycler
         recyclerView.setHasFixedSize(true)
@@ -61,12 +80,38 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
         loadDestinations()
 
         binding.destinationLikeButton.setOnCheckedChangeListener { checkBox, isChecked ->
-            if(isChecked){
-                Toast.makeText(context, "Like :)", Toast.LENGTH_SHORT).show()
-            }else {
-                Toast.makeText(context, "Dislike :(", Toast.LENGTH_SHORT).show()
+            if (isChecked) {
+                addFavourite(MAIN_DESTINATION)
+            } else {
+                removeFavourite(MAIN_DESTINATION)
             }
         }
+
+        isFavourite.observe(viewLifecycleOwner, Observer { isSavedValue ->
+            if (isSavedValue) {
+                binding.destinationLikeButton.isChecked = true
+            }
+        })
+
+        isSaved.observe(viewLifecycleOwner, Observer { isSavedValue ->
+            if (isSavedValue) {
+                Snackbar.make(binding.root, R.string.favourite_saved_alert, Snackbar.LENGTH_SHORT)
+                    .show()
+            } else {
+                Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+        })
+
+        isDeleted.observe(viewLifecycleOwner, Observer { isSavedValue ->
+            if (isSavedValue) {
+                Snackbar.make(binding.root, R.string.favourite_deleted_alert, Snackbar.LENGTH_SHORT)
+                    .show()
+            } else {
+                Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+        })
     }
 
     private fun loadDestinations(){
@@ -83,6 +128,39 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
             putStringArrayListExtra("images", destination.images as ArrayList<String>)
         }
         startActivity(intent);
+    }
+
+    private fun addFavourite(id: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            var result =
+                favouriteUseCase.saveFavourite(Favourite(FavouriteType.DESTINATION.type, id))
+
+            if (result != null) {
+                isSaved.postValue(result != -1L)
+            }
+
+        }
+    }
+
+    private fun removeFavourite(id: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            var result =
+                favouriteUseCase.removeFavourite(Favourite(FavouriteType.DESTINATION.type, id))
+
+            if (result != null) {
+                isDeleted.postValue(result != -1)
+            }
+        }
+    }
+
+    private fun isChecked(id: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            var result = favouriteUseCase.exists(Favourite(FavouriteType.DESTINATION.type, id))
+
+            if (result != null) {
+                isFavourite.postValue(result)
+            }
+        }
     }
 
 }
