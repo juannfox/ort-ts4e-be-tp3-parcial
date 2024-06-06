@@ -13,8 +13,10 @@ import com.example.parcial.listeners.OnViewItemClickedListener
 
 class OfferAdapter(
     private var offers: MutableList<Offer>,
+
     private val favoriteIds: List<Favourite>,
     private val checkBoxChangeListener: (Int, Boolean) -> Unit
+
 ): RecyclerView.Adapter<OfferHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfferHolder {
        val view = LayoutInflater.from(parent.context).inflate(R.layout.offer_card, parent, false)
@@ -31,6 +33,7 @@ class OfferAdapter(
         holder.setTitle(offer.text_tittle)
         holder.setDescription(offer.text_description)
         holder.setCardImage(offer.image_card)
+        //holder.setFavImage(offer.image_fav)
         holder.setVectorImage(offer.image_vector)
 
         val checkBox: CheckBox = holder.getOfferLikeButton() as CheckBox
@@ -39,6 +42,7 @@ class OfferAdapter(
         (holder.getOfferLikeButton() as CheckBox).setOnCheckedChangeListener { _, isChecked ->
                 checkBoxChangeListener(position, isChecked)
         }
+
     }
 
 }

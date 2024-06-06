@@ -14,8 +14,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/flight_search_background"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,15 +33,18 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout_search_flight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabBackground="@drawable/search_tab_background"
+            android:layout_height="match_parent"
+            android:background="@drawable/tab_background"
+            android:layout_gravity="center"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/fickle_blue"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/fickle_grey" />
+            app:tabTextColor="@color/fickle_grey">
+
+        </com.google.android.material.tabs.TabLayout>
 
 
         <!--
@@ -78,14 +81,17 @@
         android:id="@+id/txt_search_offers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_bold"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_bold"
         android:paddingStart="30dp"
+        android:paddingBottom="30dp"
         android:text="@string/offers"
         android:textColor="@color/fickle_black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerview_offers_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_offers_horizontal"

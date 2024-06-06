@@ -14,8 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
 import com.example.parcial.activities.DestinationDetailActivity
 import com.example.parcial.adapters.DestinationAdapter
+import com.example.parcial.adapters.OfferAdapter
+import com.example.parcial.adapters.OtherOffersAdapter
+import com.example.parcial.adapters.TripAdapter
 import com.example.parcial.databinding.FragmentExploreBinding
 import com.example.parcial.entities.Destination
+import com.example.parcial.entities.Offer
+import com.example.parcial.entities.Trip
 import com.example.parcial.listeners.OnViewItemClickedListener
 import com.example.parcial.viewmodel.ExploreViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -27,9 +32,12 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
     private val MAIN_DESTINATION = "Paris-Francia"
 
     lateinit var recyclerView: RecyclerView
+    lateinit var recOffers: RecyclerView
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var destinationAdapter: RecyclerView.Adapter<*>
+    lateinit var offerAdapter: RecyclerView.Adapter<*>
     private lateinit var destinations: MutableList<Destination>
+    private lateinit var offers: MutableList<Offer>
     private lateinit var binding: FragmentExploreBinding
 
 
@@ -43,23 +51,17 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
     ): View? {
         binding = FragmentExploreBinding.inflate(layoutInflater)
         return binding.root
+
     }
 
     override fun onStart() {
         super.onStart()
         val viewModel = ViewModelProvider(this).get(ExploreViewModel::class.java)
 
-        recyclerView = binding.trendingDestinationRecycler
-        recyclerView.setHasFixedSize(true)
-        manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.layoutManager = manager
-
-        // Adapter
-        destinations = mutableListOf() // Inicialmente vacia
-        destinationAdapter = DestinationAdapter(destinations, this@ExploreFragment)
-        recyclerView.adapter = destinationAdapter
-
+        setupRecyclerDestinations()
+        setupRecyclerOffers()
         loadDestinations()
+        loadOffers()
 
         binding.destinationLikeButton.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
@@ -156,6 +158,37 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
                 )
             )
         )
+    }
+
+    fun setupRecyclerDestinations(){
+        recyclerView = binding.trendingDestinationRecycler
+        recyclerView.setHasFixedSize(true)
+        manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager = manager
+
+        // Adapter
+        destinations = mutableListOf() // Inicialmente vacia
+        destinationAdapter = DestinationAdapter(destinations, this@ExploreFragment)
+        recyclerView.adapter = destinationAdapter
+    }
+
+    fun setupRecyclerOffers(){
+        recOffers = binding.offersRecycler
+        recOffers.setHasFixedSize(true)
+        manager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recOffers.layoutManager = manager
+
+        offers = mutableListOf()
+        offerAdapter = OtherOffersAdapter(offers)
+        //offerAdapter = OfferAdapter(offers, false)
+        recOffers.adapter = offerAdapter
+
+    }
+
+
+    private fun loadOffers(){
+        offers.add(Offer("", "20% discount for mastercard users", "limited time offer!", "", "https://i.ibb.co/zmKtCtq/offer-cardv.png", "",25, "VISA"))
+        offers.add(Offer("", "25% discount with your visa credit cards", "limited time offer!", "", "https://i.ibb.co/QvrfXLH/offer-cardm.png", "", 20, "MASTERCARD"))
     }
 
     override fun onViewItemDetail(destination: Destination) {

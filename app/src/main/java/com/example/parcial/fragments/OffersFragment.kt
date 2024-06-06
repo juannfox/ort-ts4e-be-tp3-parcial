@@ -58,6 +58,10 @@ class OffersFragment : Fragment() {
         recOffers = binding.recOffers
         recOffers.setHasFixedSize(true)
         manager = LinearLayoutManager(context)
+
+
+        //offerAdapter = OfferAdapter(offers) //,true)
+
         recOffers.layoutManager = manager
 
 
@@ -107,6 +111,7 @@ class OffersFragment : Fragment() {
             "https://i.ibb.co/syTxRWH/offer-vector.png",
             20,
             "Mastercard"
+
         )
 
         var offer2 = Offer(
@@ -118,6 +123,7 @@ class OffersFragment : Fragment() {
             "https://i.ibb.co/syTxRWH/offer-vector.png",
             15,
             "VISA"
+
         )
 
         offers.add(offer1)
