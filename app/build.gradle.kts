@@ -84,6 +84,5 @@ dependencies {
     kapt(libs.hilt.compiler)
     annotationProcessor(libs.hilt.android)
     implementation(libs.okhttp.interceptor)
-    //runtimeOnly(libs.androidx.hilt)
-    runtimeOnly("androidx.hilt:hilt-navigation-compose:1.2.0")
+    runtimeOnly(libs.androidx.hilt)
 }
