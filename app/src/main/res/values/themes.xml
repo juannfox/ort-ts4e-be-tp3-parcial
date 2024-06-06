@@ -40,18 +40,6 @@
     </style>
 
     /****************************************************************************/
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
-    </style>
-
-    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
-        <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/transparent</item>
-    </style>
-
-    <style name="ModalBottomSheetDialog" parent="Widget.Material3.BottomSheet.Modal">
-        <item name="backgroundTint">@color/white</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.LargeComponent</item>
-    </style>
 
     <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
         <item name="cornerFamily">cut</item>

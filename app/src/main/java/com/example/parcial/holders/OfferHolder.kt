@@ -34,18 +34,13 @@ class OfferHolder(v: View) : RecyclerView.ViewHolder(v) {
         Glide.with(view).load(url).into(img)
     }
 
-    fun setFavImage(url: String?){
-        val img : ImageView = view.findViewById(R.id.image_fav)
-        Glide.with(view).load(url).into(img)
-    }
-
     fun setVectorImage(url: String?){
       val img : ImageView = view.findViewById(R.id.image_vector)
        Glide.with(view).load(url).override(70, 70).into(img)
     }
 
-    fun getCardOfferView(): View {
-        return view.findViewById(R.id.offer_card)
+    fun getOfferLikeButton(): View {
+        return view.findViewById(R.id.offer_like_button)
     }
 
 }

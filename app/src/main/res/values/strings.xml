@@ -46,6 +46,9 @@
     <string name="favourite_saved_alert">"The destination was saved successfully!"</string>
     <string name="favourite_deleted_alert">"The destination was deleted successfully"</string>
     <string name="favourite_error_alert">"An error has occurred :("</string>
+
+    <string name="favourite_offer_saved_alert">"The offer was saved successfully!"</string>
+    <string name="favourite_offer_deleted_alert">"The offer was deleted successfully"</string>
     <string name="new_route">New route added</string>
 
       /*Drawer Menu*/

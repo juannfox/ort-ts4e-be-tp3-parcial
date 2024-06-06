@@ -6,14 +6,20 @@ import javax.inject.Inject
 
 class FavouriteUseCase @Inject constructor(private val repository: FavouriteRepository) {
 
-        //TODO: Revisar si en este caso necesito una función asíncrona
-        //En el recycler la función asíncrona me permite por ejemplo mostrar el loader mientras carga resultados
         suspend fun exists(favourite: Favourite): Boolean {
             return repository.existsFavourite(favourite)
         }
 
         suspend fun getFavouritesDestinations(): List<Favourite>? {
                 val favourites = repository.getFavouritesDestinationsFromDatabase()
+                if (!favourites.isNullOrEmpty()) {
+                        return favourites
+                }
+                return null
+        }
+
+        suspend fun getFavouritesOffers(): List<Favourite>? {
+                val favourites = repository.getFavouritesOffersFromDatabase()
                 if (!favourites.isNullOrEmpty()) {
                         return favourites
                 }

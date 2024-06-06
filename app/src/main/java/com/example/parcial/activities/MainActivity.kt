@@ -14,7 +14,9 @@ import com.example.parcial.R
 import com.example.parcial.helpers.UIHelpers
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var bottomNavView: BottomNavigationView
@@ -36,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar el DrawerLayout y el ActionBarDrawerToggle
         drawerLayout = findViewById(R.id.drawer_layout)
-        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer)
+        drawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer)
         drawerLayout.addDrawerListener(drawerToggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
@@ -63,12 +66,12 @@ class MainActivity : AppCompatActivity() {
         darkModeSetup() // Lectura de preferencias globales para modo oscuro
     }
 
-    private fun renderSettingsFragment(){
+    private fun renderSettingsFragment() {
         // Ver si mostrar 5 elemento de navegacion, SettingsFragment
         // La bottom bar soporta solo 4, pero usamos el mismo nav controller
-        if (intent.extras != null){
+        if (intent.extras != null) {
             val isSettings = intent.extras?.getBoolean("settings", false)
-            if (isSettings == true){
+            if (isSettings == true) {
                 // Navegar manualmente
                 navHostFragment.navController.navigate(R.id.settings)
                 // Restaurar navgraph del bottom bar
@@ -80,11 +83,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun darkModeSetup(){
+    private fun darkModeSetup() {
         // Leer Modo oscuro desde las preferencias globales
         val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
         val darkModeToggle = getString(R.string.dark_mode_key)
-        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
+        val toggled =
+            UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

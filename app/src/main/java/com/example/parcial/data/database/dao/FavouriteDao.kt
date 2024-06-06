@@ -13,7 +13,7 @@ interface FavouriteDao {
     suspend fun existsFavouriteByTypeAndId(type: String, id: String): Boolean
 
     @Query("SELECT * FROM favourites WHERE type = :type")
-    suspend fun getAllDestinationsFavourites(type: String): List<FavouriteEntity>
+    suspend fun getAllFavourites(type: String): List<FavouriteEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavourite(favourite: FavouriteEntity): Long
