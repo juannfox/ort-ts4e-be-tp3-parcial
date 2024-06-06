@@ -2,6 +2,7 @@ package com.example.parcial.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,19 +63,22 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
 
         binding.destinationLikeButton.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
+                Log.d("ExploreFragment", "isChecked")
                 viewModel.addFavourite(MAIN_DESTINATION)
             } else {
+                Log.d("ExploreFragment", "is des-Checked")
                 viewModel.removeFavourite(MAIN_DESTINATION)
             }
         }
 
         viewModel.isFavourite.observe(viewLifecycleOwner, Observer { isSavedValue ->
+            Log.d("ExploreFragment", "isFav")
             if (isSavedValue) {
                 binding.destinationLikeButton.isChecked = true
             }
         })
 
-        viewModel.isSaved.observe(viewLifecycleOwner, Observer { isSavedValue ->
+        /*viewModel.isSaved.observe(viewLifecycleOwner, Observer { isSavedValue ->
             if (isSavedValue) {
                 Snackbar.make(binding.root, R.string.favourite_saved_alert, Snackbar.LENGTH_SHORT)
                     .show()
@@ -92,7 +96,7 @@ class ExploreFragment : Fragment(), OnViewItemClickedListener<Destination> {
                 Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
                     .show()
             }
-        })
+        })*/
     }
 
     private fun loadDestinations() {

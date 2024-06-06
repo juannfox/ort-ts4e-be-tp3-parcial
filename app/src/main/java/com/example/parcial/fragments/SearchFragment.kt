@@ -7,7 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.parcial.R
 import com.example.parcial.activities.SearchResultsActivity
 import com.example.parcial.adapters.FlightSearchStateAdapter
 import com.example.parcial.databinding.FragmentSearchBinding
@@ -33,27 +38,17 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding  = FragmentSearchBinding.inflate(layoutInflater)
-        // Inflate the layout for this fragment
         searchView = binding.root
-        return  searchView
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         searchViewPager = binding.viewPagerSearchFlight
         tabLayout = binding.tabLayoutSearchFlight
 
-        searchViewPager.adapter = FlightSearchStateAdapter(requireActivity())
-
+        setupViewPager(searchViewPager)
         TabLayoutMediator(tabLayout, searchViewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "One Way"
-                1 -> "Round Trip"
-                else -> null
-            }
+            tab.customView = createCustomTabView(position)
+
         }.attach()
+
 
         btnSearch = binding.btnSearch
 
@@ -61,12 +56,71 @@ class SearchFragment : Fragment() {
             val intent = Intent(context, SearchResultsActivity::class.java)
             startActivity(intent)
         }
+
+
+
+        return  searchView
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Ajustar el tamaño del ViewPager2 al cambiar de pestaña
+        searchViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                searchViewPager.requestLayout()
+            }
+        })
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                val selectedTabTextView = (tab?.customView as? TextView)
+                selectedTabTextView?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                val unselectedTabTextView = (tab?.customView as? TextView)
+                unselectedTabTextView?.setTextColor(ContextCompat.getColor(requireContext(), R.color.fickle_grey))
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+        })
+
+    }
+
+
+    private fun setupViewPager(viewPager: ViewPager2) {
+        val adapter = FlightSearchStateAdapter(requireActivity())
+        adapter.addFragment(OneWayFragment())
+        adapter.addFragment(RoundTripFragment())
+        viewPager.adapter = adapter
+    }
+
+    private fun createCustomTabView(position: Int): View {
+        val customTab = LayoutInflater.from(context).inflate(R.layout.custom_tab, null) as TextView
+        when (position) {
+            0 -> {
+                customTab.text = "One way"
+                customTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+            }
+            1 -> {
+                customTab.text = "Round trip"
+                customTab.setTextColor(ContextCompat.getColor(requireContext(), R.color.fickle_grey))
+            }
+        }
+
+        return customTab
+    }
+
+
 
     override fun onStart() {
         super.onStart()
 
     }
+
 
 
 

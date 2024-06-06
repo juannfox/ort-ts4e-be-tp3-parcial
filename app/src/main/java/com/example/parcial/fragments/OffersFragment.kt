@@ -1,33 +1,23 @@
 package com.example.parcial.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
 import com.example.parcial.adapters.OfferAdapter
 import com.example.parcial.databinding.FragmentOffersBinding
-import com.example.parcial.domain.FavouriteUseCase
 import com.example.parcial.entities.Favourite
-import com.example.parcial.entities.FavouriteType
 import com.example.parcial.entities.Offer
-import com.example.parcial.viewmodel.DestinationDetailViewModel
 import com.example.parcial.viewmodel.OffersViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.withCreationCallback
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OffersFragment : Fragment() {
@@ -72,15 +62,19 @@ class OffersFragment : Fragment() {
 
 
         viewModel.favourites.observe(viewLifecycleOwner, Observer<List<Favourite>> {
-            offerAdapter = OfferAdapter(offers, it?: listOf()) { position, isChecked ->
+            offerAdapter = OfferAdapter(offers, it ?: listOf()) { position, isChecked ->
                 viewModel.handleCheckboxStateChange(position, isChecked)
             }
             recOffers.adapter = offerAdapter
         })
 
-        viewModel.isSaved.observe(viewLifecycleOwner, Observer<Boolean> { isSavedValue ->
+        /*viewModel.isSaved.observe(viewLifecycleOwner, Observer<Boolean> { isSavedValue ->
             if (isSavedValue) {
-                Snackbar.make(binding.root, R.string.favourite_offer_saved_alert, Snackbar.LENGTH_SHORT)
+                Snackbar.make(
+                    binding.root,
+                    R.string.favourite_offer_saved_alert,
+                    Snackbar.LENGTH_SHORT
+                )
                     .show()
             } else {
                 Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
@@ -90,13 +84,17 @@ class OffersFragment : Fragment() {
 
         viewModel.isDeleted.observe(viewLifecycleOwner, Observer { isDeletedValue ->
             if (isDeletedValue) {
-                Snackbar.make(binding.root, R.string.favourite_offer_deleted_alert, Snackbar.LENGTH_SHORT)
+                Snackbar.make(
+                    binding.root,
+                    R.string.favourite_offer_deleted_alert,
+                    Snackbar.LENGTH_SHORT
+                )
                     .show()
             } else {
                 Snackbar.make(binding.root, R.string.favourite_error_alert, Snackbar.LENGTH_SHORT)
                     .show()
             }
-        })
+        })*/
     }
 
     fun fillList() {

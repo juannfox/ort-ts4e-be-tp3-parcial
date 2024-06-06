@@ -25,7 +25,7 @@ class ExploreViewModel @Inject constructor(
     init {
         isChecked(MAIN_DESTINATION)
     }
-    public fun addFavourite(id: String) {
+    fun addFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
                 favouriteUseCase.saveFavourite(Favourite(FavouriteType.DESTINATION.type, id))
@@ -36,7 +36,7 @@ class ExploreViewModel @Inject constructor(
 
         }
     }
-    public fun removeFavourite(id: String) {
+    fun removeFavourite(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result =
                 favouriteUseCase.removeFavourite(Favourite(FavouriteType.DESTINATION.type, id))
@@ -47,7 +47,7 @@ class ExploreViewModel @Inject constructor(
         }
     }
 
-    public fun isChecked(id: String) {
+    fun isChecked(id: String) {
         CoroutineScope(Dispatchers.Main).launch {
             var result = favouriteUseCase.exists(Favourite(FavouriteType.DESTINATION.type, id))
 

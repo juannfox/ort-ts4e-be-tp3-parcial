@@ -1,61 +1,102 @@
 package com.example.parcial.activities
 
-import SettingsFragment
 import android.os.Bundle
-import android.widget.Toast
+import android.preference.PreferenceManager
+import android.view.MenuItem
+import android.widget.ImageButton
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.lifecycle.MutableLiveData
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.parcial.R
-import com.example.parcial.databinding.ActivityDestinationDetailBinding
-import com.example.parcial.databinding.ActivityMainBinding
-import com.example.parcial.domain.FavouriteUseCase
-import com.example.parcial.entities.Favourite
-import com.example.parcial.entities.FavouriteType
-import com.example.parcial.fragments.SettingsWrapperFragment
 import com.example.parcial.helpers.UIHelpers
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var bottomNavView: BottomNavigationView
 
-    lateinit var recyclerView: RecyclerView
-    lateinit var manager: RecyclerView.LayoutManager
-    lateinit var destinationDetailPhotoAdapter: RecyclerView.Adapter<*>
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var drawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Fragment container con navgraph
+        // Obtener el fragmento de navegación y la vista de navegación
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fc_main) as NavHostFragment
-        // Barra/menu inferior
+
+        // Configurar la barra de navegación inferior
         bottomNavView = findViewById(R.id.bottom_bar)
-        // Conectar navgraph con menu inferior
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        darkModeSetup()
+        // Configurar el DrawerLayout y el ActionBarDrawerToggle
+        drawerLayout = findViewById(R.id.drawer_layout)
+        drawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer)
+        drawerLayout.addDrawerListener(drawerToggle)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+
+        // Sincronizar el estado del ActionBarDrawerToggle con el DrawerLayout
+        drawerToggle.syncState()
+
+        // Obtener el NavigationView y vincularlo con el NavController
+        navigationView = findViewById(R.id.drawer_menu)
+        NavigationUI.setupWithNavController(navigationView, navHostFragment.navController)
+
+        // Configurar el botón del menú hamburguesa para abrir y cerrar el DrawerLayout
+        val btnMenu: ImageButton = findViewById(R.id.btn_menu)
+        btnMenu.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+
+        renderSettingsFragment() // Solo si el intent tiene el parametro esperado
+
+        darkModeSetup() // Lectura de preferencias globales para modo oscuro
     }
 
-    private fun darkModeSetup(){
+    private fun renderSettingsFragment() {
+        // Ver si mostrar 5 elemento de navegacion, SettingsFragment
+        // La bottom bar soporta solo 4, pero usamos el mismo nav controller
+        if (intent.extras != null) {
+            val isSettings = intent.extras?.getBoolean("settings", false)
+            if (isSettings == true) {
+                // Navegar manualmente
+                navHostFragment.navController.navigate(R.id.settings)
+                // Restaurar navgraph del bottom bar
+                bottomNavView.setOnItemSelectedListener { item ->
+                    navHostFragment.navController.navigate(item.itemId)
+                    true
+                }
+            }
+        }
+    }
+
+    private fun darkModeSetup() {
         // Leer Modo oscuro desde las preferencias globales
         val preferencesManager = PreferenceManager.getDefaultSharedPreferences(this);
         val darkModeToggle = getString(R.string.dark_mode_key)
-        val toggled = UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
-        // Recrear la activity solo si cambio el modo
-        if (toggled) this.recreate()
+        val toggled =
+            UIHelpers.toggleNightMode(preferencesManager.getBoolean(darkModeToggle, false));
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Manejar los clics del botón de hamburguesa
+        return if (drawerToggle.onOptionsItemSelected(item)) {
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
     }
 }
-

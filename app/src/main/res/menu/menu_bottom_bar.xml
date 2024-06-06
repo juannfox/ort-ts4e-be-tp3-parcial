@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Explore"
         android:id="@+id/explore"
@@ -11,7 +10,7 @@
     <item android:title="Search"
         android:id="@+id/search"
         android:enabled="true"
-        android:icon="@drawable/search"
+        android:icon="@drawable/ic_search_flights"
         />
 
     <item android:title="Offers"

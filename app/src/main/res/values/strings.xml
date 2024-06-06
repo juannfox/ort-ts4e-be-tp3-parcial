@@ -3,11 +3,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    /*View: Search flights fragment*/
+    /*View: Search flights view*/
     <string name="flights_search">Search</string>
+    <string name="hint_from">From</string>
     <string name="select_departure">Select Departure</string>
+    <string name="hint_to">To</string>
     <string name="select_arrival">Select Arrival</string>
+    <string name="hint_departure_date">Departure Date</string>
     <string name="select_date">Select Date</string>
+    <string name="hint_passengers">Passengers</string>
+    <string name="select_passengers">1 Passenger</string>
+    <string name="hint_class">Class</string>
+    <string name="select_class">Class</string>
+    <string name="add_destination">Add new destination</string>
 
 
     /*View: Search flights result*/
@@ -41,4 +49,16 @@
 
     <string name="favourite_offer_saved_alert">"The offer was saved successfully!"</string>
     <string name="favourite_offer_deleted_alert">"The offer was deleted successfully"</string>
+    <string name="new_route">New route added</string>
+
+      /*Drawer Menu*/
+
+        <string name="open_drawer">Open Drawer</string>
+        <string name="close_drawer">Close Drawer</string>
+        <string name="menu_button_description">Menu</string>
+        <string name="image1_description">Image 1</string>
+        <string name="image2_description">Image 2</string>
+    <string name="hello">Hello</string>
+
+
 </resources>
